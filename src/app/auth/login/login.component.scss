@@ -1,0 +1,49 @@
+.center{
+    text-align: center;
+}
+.text-custom{ 
+    font-family: "custom"; 
+}
+.mt{  
+    margin-top: 10 !important;
+}
+
+.link{
+    text-decoration: none;
+    color: grey;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.img {
+    max-width:400px;
+    max-height:200px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pad{
+    padding-top: 100px;
+}
+
+.btn{
+    color: #fff;
+    border-color: #0cd1e8;
+    background: #0cd1e8;
+    border-radius: 10rem;
+    padding: .75rem 1rem;
+}
+
+.btn:hover{
+    color: black;
+}
+
+ .centro-btn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 100%;
+}
