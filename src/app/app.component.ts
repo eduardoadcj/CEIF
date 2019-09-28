@@ -10,12 +10,21 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+  tipoUsuario: string = 'aluno';
+  tipo: boolean = true;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
     this.initializeApp();
+    if(this.tipoUsuario === "aluno"){
+      this.tipo = false;
+    }else{
+      this.tipo = true;
+    }
   }
 
   initializeApp() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router,
+    ) { }
 
   ngOnInit() {}
 
@@ -19,6 +23,6 @@ export class LoginComponent implements OnInit {
   })
 
   login(){
-    console.log("Clicou")
+    this.router.navigate(['home']);
   }
 }

@@ -18,10 +18,12 @@ import { LoginComponent } from './auth/login/login.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+import { ListCategoriaPage } from './equipamento/list-categoria/list-categoria.page';
+
 
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent],
+  declarations: [AppComponent,LoginComponent,ListCategoriaPage],
   entryComponents: [],
   imports: [
     BrowserModule, 
