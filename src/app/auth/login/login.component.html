@@ -1,27 +1,40 @@
 <ion-app>
   <ion-content padding>
-    <img class="img" width="" height="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Instituto_Federal_do_Paran%C3%A1_-_Marca_Vertical_2015.svg/1200px-Instituto_Federal_do_Paran%C3%A1_-_Marca_Vertical_2015.svg.png">
+    <img class="img" width="" height="" style="margin-top: 10%; margin-bottom: 10%"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Instituto_Federal_do_Paran%C3%A1_-_Marca_Vertical_2015.svg/1200px-Instituto_Federal_do_Paran%C3%A1_-_Marca_Vertical_2015.svg.png">
 
-    <ion-item>
-      <ion-label position="floating">E-mail : <ion-text color="dark">*</ion-text></ion-label>
-      <ion-input required type="text"></ion-input>
-    </ion-item>
+    <form [formGroup]="loginForm">
+      <ion-item>
+        <div class="controls">
+          <ion-label class="inputCustom" position="floating">E-mail<ion-text color="dark">*</ion-text>
+          </ion-label>
+          <ion-input type="text" formControlName='email' required #email></ion-input>
+        </div>
+      </ion-item>
+      <span style='color:gray; font-size: 10px;margin-left: 5%;' *ngIf="loginForm.controls.email.hasError('required')">
+        Por favor insira o seu e-mail*
+      </span>
+      <span style='color:red; font-size:12px;margin-left: 5%;' *ngIf="loginForm.controls.email.hasError('email')">
+        Por favor insira o seu e-mail corretamente
+      </span>
 
-    <ion-item>
-      <ion-label position="floating">Senha : <ion-text color="dark">*</ion-text>
-      </ion-label>
-      <ion-input required name="mail" type="password" ></ion-input>
-    </ion-item>
+      <ion-item style="margin-top: 5%">
+        <ion-label position="floating">Senha : <ion-text color="dark">*</ion-text>
+        </ion-label>
+        <ion-input required name="mail" type="password" formControlName='senha'></ion-input>
+      </ion-item>
+      <span style='color:gray; font-size: 10px;margin-left: 5%' *ngIf="loginForm.controls.senha.hasError('required')">
+        Por favor insira a sua senha*
+      </span>
+      <button class="mt btn centro-btn" expand="full" [disabled]="!loginForm.valid"
+        style="background-color:#4aba70;margin-top: 10%" (click)="login()">
+        Entrar
+      </button>
+    </form>
 
     <br>
-    <button class="mt btn centro-btn" expand="full" style="background-color:#4aba70">
-      Entrar
-    </button>
+    <a class="center link fontCustom">Esqueceu a senha?</a>
 
-    <br>
-    <a class="center link mb-1" >Esqueceu a senha?</a>
-  
-    <a class="center link link02" >Não possui uma conta? Cadastre-se</a>
-
+    <a class="center link link02 fontCustom">Não possui uma conta? Cadastre-se</a>
   </ion-content>
 </ion-app>
