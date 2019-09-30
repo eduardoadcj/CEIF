@@ -19,10 +19,14 @@ export class AuthService {
   login(email,senha){
     return this.afAuth.auth.signInWithEmailAndPassword(email, senha)
       .then((result) => {
-        this.router.navigateByUrl('/home');
+        this.router.navigate(['/home']);
       }).catch(() => {
         this.presentEmailSenhaIncorretos();
       })
+  }
+  deslogar(){
+    this.afAuth.auth.signOut();
+    this.router.navigate(['/login'])
   }
 
 
