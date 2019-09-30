@@ -19,11 +19,12 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { ListCategoriaPage } from './equipamento/list-categoria/list-categoria.page';
+import { RecuperarSenhaComponent } from './auth/recuperar-senha/recuperar-senha.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent,ListCategoriaPage],
+  declarations: [AppComponent,LoginComponent,ListCategoriaPage, RecuperarSenhaComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 
@@ -37,6 +38,7 @@ import { ListCategoriaPage } from './equipamento/list-categoria/list-categoria.p
   providers: [
     StatusBar,
     SplashScreen,
+    RecuperarSenhaComponent,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
   ],

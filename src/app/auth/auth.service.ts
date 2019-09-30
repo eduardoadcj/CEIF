@@ -12,11 +12,11 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private router: Router,
     public alertController: AlertController,
-    
-    ) { }
+
+  ) { }
 
 
-  login(email,senha){
+  login(email, senha) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, senha)
       .then((result) => {
         this.router.navigate(['/home']);
@@ -24,14 +24,55 @@ export class AuthService {
         this.presentEmailSenhaIncorretos();
       })
   }
-  deslogar(){
+  deslogar() {
     this.afAuth.auth.signOut();
     this.router.navigate(['/login'])
+  }
+
+  recuperarSenha(email: string) {
+    return this.afAuth.auth.sendPasswordResetEmail(email)
+      .then((result) => {
+        this.presentRecuperarSenha();
+        this.router.navigate(['/login']);
+      }).catch(() => {
+        this.presentEmailSenhaIncorretos();
+      })
   }
 
 
 
   // ALERTS
+  async presentRecuperarSenha() {
+    const alert = await this.alertController.create({
+      header: '',
+      message: '<strong>E-mail enviado com sucesso</strong>!!!',
+      buttons: [
+        {
+          text: 'Fechar',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+  async presentErroRecuperarSenha() {
+    const alert = await this.alertController.create({
+      header: '',
+      message: '<strong>Erro ao enviar e-mail</strong>!!!',
+      buttons: [
+        {
+          text: 'Fechar',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
   async presentEmailSenhaIncorretos() {
     const alert = await this.alertController.create({
       header: '',

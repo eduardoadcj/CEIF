@@ -1,0 +1,30 @@
+<ion-app>
+  <ion-content padding>
+    <img class="img" width="" height="" style="margin-top: 10%; margin-bottom: 5%"
+      src="../../../assets/img/Logo Final.png">
+      <h3 style="color:#4aba70; text-align:center">Redefinir Senha</h3>
+
+    <form [formGroup]="recuperarSenhaForm">
+      <ion-item>
+        <div class="controls">
+          <ion-label class="inputCustom" position="floating">E-mail<ion-text color="dark">*</ion-text>
+          </ion-label>
+          <ion-input type="text" formControlName='email' required #email></ion-input>
+        </div>
+      </ion-item>
+      <span style='color:gray; font-size: 10px;margin-left: 5%;' *ngIf="recuperarSenhaForm.controls.email.hasError('required')">
+        Por favor insira o seu e-mail*
+      </span>
+      <span style='color:red; font-size:12px;margin-left: 5%;' *ngIf="recuperarSenhaForm.controls.email.hasError('email')">
+        Por favor insira o seu e-mail corretamente
+      </span>
+      <button class="mt btn centro-btn" expand="full" [disabled]="!recuperarSenhaForm.valid"
+        style="background-color:#4aba70;margin-top: 10%" (click)="recuperarSenha()">
+        Enviar
+      </button>
+    </form>
+
+    <br>
+    <a class="center link link02 fontCustom">Lembrou a senha? <a class="center link link02 fontCustom" routerLink="/login">Efetue o login</a></a>
+  </ion-content>
+</ion-app>
