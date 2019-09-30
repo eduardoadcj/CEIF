@@ -20,11 +20,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { ListCategoriaPage } from './equipamento/list-categoria/list-categoria.page';
 import { RecuperarSenhaComponent } from './auth/recuperar-senha/recuperar-senha.component';
+import { SplashComponent } from './splash/splash.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent,ListCategoriaPage, RecuperarSenhaComponent],
+  declarations: [AppComponent,LoginComponent,ListCategoriaPage, RecuperarSenhaComponent,SplashComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 

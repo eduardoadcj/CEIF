@@ -8,7 +8,7 @@ import { MenuController, AlertController } from '@ionic/angular';
 })
 export class HomePage {
 
-  tipoUsuario: string = 'aluno';
+  tipoUsuario: string = 'usuario';
   tipo: boolean = true;
 
   constructor(private menuController: MenuController, private alertController: AlertController) {
