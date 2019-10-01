@@ -17,15 +17,18 @@ import { LoginComponent } from './auth/login/login.component';
 // FIREBASE
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 
 import { ListCategoriaPage } from './equipamento/list-categoria/list-categoria.page';
 import { RecuperarSenhaComponent } from './auth/recuperar-senha/recuperar-senha.component';
 import { SplashComponent } from './splash/splash.component';
+import { AddcategoriaComponent } from './equipamento/addcategoria/addcategoria.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent,ListCategoriaPage, RecuperarSenhaComponent,SplashComponent],
+  declarations: [AppComponent,LoginComponent,ListCategoriaPage, RecuperarSenhaComponent,SplashComponent,AddcategoriaComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 
@@ -34,7 +37,8 @@ import { SplashComponent } from './splash/splash.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFirestoreModule,
   ],
   providers: [
     StatusBar,

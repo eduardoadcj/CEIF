@@ -5,15 +5,17 @@ import { ListCategoriaPageModule } from './equipamento/list-categoria/list-categ
 import { ListCategoriaPage } from './equipamento/list-categoria/list-categoria.page';
 import { RecuperarSenhaComponent } from './auth/recuperar-senha/recuperar-senha.component';
 import { SplashComponent } from './splash/splash.component';
+import { AddcategoriaComponent } from './equipamento/addcategoria/addcategoria.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'splash', pathMatch: 'full' },
   { path: 'splash', component: SplashComponent},
   { path: 'login', component:LoginComponent},
   { path: 'recuperarSenha', component: RecuperarSenhaComponent},
+  { path: 'addcategoria', component: AddcategoriaComponent},
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   { path: 'list-categoria', loadChildren: './equipamento/list-categoria/list-categoria.module#ListCategoriaPageModule' },
-  { path: 'equipamento', component: ListCategoriaPage},
+  { path: 'categoria', component: ListCategoriaPage},
 ];
 
 @NgModule({
