@@ -24,11 +24,12 @@ import { ListCategoriaPage } from './equipamento/list-categoria/list-categoria.p
 import { RecuperarSenhaComponent } from './auth/recuperar-senha/recuperar-senha.component';
 import { SplashComponent } from './splash/splash.component';
 import { AddcategoriaComponent } from './equipamento/addcategoria/addcategoria.component';
+import { AddequipamentoComponent } from './equipamento/addequipamento/addequipamento.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent,ListCategoriaPage, RecuperarSenhaComponent,SplashComponent,AddcategoriaComponent],
+  declarations: [AppComponent,LoginComponent,ListCategoriaPage, RecuperarSenhaComponent,SplashComponent,AddcategoriaComponent, AddequipamentoComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 
