@@ -10,6 +10,17 @@
 <ion-content>
 
   <ion-searchbar></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let categoria of categorias$| async">
+      <ion-avatar slot="start">
+        <img width="30px" height="30px"
+          src="https://blog.certisign.com.br/wp-content/uploads/2018/10/certo.png?cod_rev=38788">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{categoria.nome}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button color="success" routerLink="/addcategoria">

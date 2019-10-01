@@ -16,8 +16,8 @@
     margin-right: auto;
 }
 .img {
-    max-width:200px;
-    max-height:80px;
+    max-width:400px;
+    max-height:200px;
     width: auto;
     height: auto;
     display: block;
@@ -46,4 +46,8 @@
     margin-right: auto;
     display: block;
     width: 100%;
+}
+.fontCustom{
+    font-size: 14px;
+    margin-bottom: 5px;
 }

@@ -1,45 +1,32 @@
 <ion-app>
   <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="login"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Nova Categoria</ion-title>
+    </ion-toolbar>
   </ion-header>
 
   <ion-content padding>
+    <form [formGroup]="categoriaForm">
+      <ion-item>
+        <div class="controls">
+          <ion-label class="inputCustom" position="floating" >Nome da Categoria<ion-text style="color:red">*</ion-text>
+          </ion-label>
+          <ion-input type="text" formControlName='nome'></ion-input>
+        </div>
+      </ion-item>
+      <span style='color:gray; font-size: 10px;margin-left: 5%;' *ngIf="categoriaForm.controls.nome.hasError('required')">
+        Por favor insira o nome da categoria*
+      </span>
+      <br>
+      <button class="mt btn centro-btn" [disabled]="!categoriaForm.valid" style="background-color:#4aba70;margin-top:5% "
+        expand="full" color="secondary" (click)="addCategoria()">
+        Salvar
+      </button>
+    </form>
 
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title class="center" style="color:#4aba70">Nova Categoria</ion-card-title>
-      </ion-card-header>
-    </ion-card>
-
-    <ion-item>
-      <ion-label position="floating">Mantimento</ion-label>
-      <ion-input ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Data Validade</ion-label>
-      <ion-datetime displayFormat="DD MMM YYYY" max="2050" 
-        month-short-names="jan, fev, mar, abr, mar, jun, jul, ago, set, out, nov, dez" placeholder="Selecionar data">
-      </ion-datetime>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Unidade de Medida</ion-label>
-      <ion-select >
-        <ion-select-option value="g">Grama(s)</ion-select-option>
-        <ion-select-option value="L">Litro(s)</ion-select-option>
-        <ion-select-option value="UN">Unidade(s)</ion-select-option>
-        <ion-select-option value="Kg">Quilograma(s)</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Quantidade</ion-label>
-      <ion-input ></ion-input>
-    </ion-item>
-    <br>
-    <button class="mt btn centro-btn" expand="full" color="secondary" (click)="salvarMantimento()">
-      Salvar
-    </button>
 
   </ion-content>
 </ion-app>
