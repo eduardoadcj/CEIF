@@ -32,8 +32,9 @@ export class AddequipamentoComponent implements OnInit {
     
   }
   addCategoria(){
-    console.log(this.categoria.nome);
-
+    let categoriaNome = this.categoriaService.buscarPorId(this.equipamentoForm.value.idCategoria);
+    console.log('id: '+this.equipamentoForm.value.idCategoria);
+    console.log('nome: '+categoriaNome);
   }
 
 }

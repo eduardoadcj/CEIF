@@ -23,14 +23,15 @@ export class CategoriasService {
   listarCategoria(): Observable<Categoria[]> {
     return this.categoriaCollection.valueChanges();
   }
-  buscarPorId(key){
+  buscarPorId(key): string {
     let categoriaDoc = this.afs.doc<Categoria>('categoria/' + key + '');
     categoriaDoc.valueChanges()
       .pipe(take(1))
       .subscribe(material => {
-        this.nomeCategoria = material.nome; 
+        this.nomeCategoria = material.nome;
         return this.nomeCategoria;
-      }).unsubscribe();
-     
+      });
+      return this.nomeCategoria;
+   
   }
 }
