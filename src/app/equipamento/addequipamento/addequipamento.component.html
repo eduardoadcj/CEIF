@@ -12,7 +12,8 @@
     <form [formGroup]="equipamentoForm">
       <ion-item>
         <div class="controls">
-          <ion-label class="inputCustom" position="floating">Descricao do Material<ion-text style="color:red">*</ion-text>
+          <ion-label class="inputCustom" position="floating">Descricao do Material<ion-text style="color:red">*
+            </ion-text>
           </ion-label>
           <ion-input type="text" formControlName='descricao'></ion-input>
         </div>
@@ -23,15 +24,16 @@
       </span>
       <ion-item>
         <ion-label>Categoria</ion-label>
-        <ion-select placeholder="Escolha"> 
-          <ion-select-option *ngFor="let categoria of categorias$| async" formControlName="categoria">{{categoria.nome}}</ion-select-option>
+        <ion-select placeholder="Escolha" [(ngModel)]="categoria" formControlName="idCategoria">
+          <ion-select-option *ngFor="let categoria of categorias$| async" value="{{categoria}}" [value]="categoria.nome">{{categoria.nome}}
+          </ion-select-option>
         </ion-select>
       </ion-item>
-      <br>
-      <button class="mt btn centro-btn" [disabled]="!equipamentoForm.valid"
-        style="background-color:#4aba70;margin-top:5% " expand="full" color="secondary" (click)="addCategoria()">
+      <button class="mt btn centro-btn" style="background-color:#4aba70;margin-top:5% " expand="full" color="secondary"
+        (click)="addCategoria()">
         Salvar
       </button>
+      <br>
     </form>
 
 
