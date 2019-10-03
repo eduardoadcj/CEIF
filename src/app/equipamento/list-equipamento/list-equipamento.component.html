@@ -11,9 +11,9 @@
 
   <ion-searchbar></ion-searchbar>
   <ion-list>
-    <ion-card *ngFor="let material of materiais$| async">
+    <!-- <ion-card *ngFor="let material of materiais$| async">
       <ion-card-header>
-        <ion-card-subtitle>{{material.categoria}}</ion-card-subtitle>
+        <ion-card-subtitle>{{material.categoria.nome}}</ion-card-subtitle>
         <ion-card-title>{{material.descricao}}</ion-card-title>
       </ion-card-header>
   
@@ -24,20 +24,23 @@
         </div>
       </ion-card-content>
       <ion-button (click)="qrcode()">Alterar</ion-button>
-    </ion-card>
+    </ion-card> -->
   </ion-list>
   <ion-list>
+   <hr style="border-top:solid 1px; border-color: grey;">
     <ion-item *ngFor="let material of materiais$| async">
       <ion-avatar slot="start">
         <img width="30px" height="30px"
           src="https://blog.certisign.com.br/wp-content/uploads/2018/10/certo.png?cod_rev=38788">
       </ion-avatar>
       <ion-label>
-        <h2>{{material.categoria}}</h2>
+        <h2>{{material.categoria.nome}}</h2>
         <h2><strong>{{material.descricao}}</strong></h2>
         <h3>Quantidade: {{material.quantidade}}</h3>
         <h3>Disponível: {{material.disponivel}}</h3>
+        <h4>Status: <span style="color:green">{{material.status}}</span></h4>
         <ion-button (click)="qrcode()">Alterar</ion-button>
+        <ion-button (click)="qrcode()" color="danger">Excluir</ion-button>
       </ion-label>
     </ion-item>
   </ion-list>

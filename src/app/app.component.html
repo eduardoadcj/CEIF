@@ -17,7 +17,7 @@
         </ion-item>
         <ion-item *ngIf="tipo">
           <ion-icon name="bookmarks" slot="start"></ion-icon>
-          <a routerLink="/equipamento">Equipamentos</a>
+          <a routerLink="/equipamento" (click)="toggle()">Equipamentos</a>
         </ion-item>
         <ion-item *ngIf="tipo">
           <ion-icon name="pricetag" slot="start" ></ion-icon>
