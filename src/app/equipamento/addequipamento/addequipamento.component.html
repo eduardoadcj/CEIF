@@ -29,8 +29,20 @@
           </ion-select-option>
         </ion-select>
       </ion-item>
-      <button class="mt btn centro-btn" style="background-color:#4aba70;margin-top:5% " expand="full" color="secondary"
-        (click)="addCategoria()">
+        <ion-item>
+          <div class="controls">
+            <ion-label class="inputCustom" position="floating">Quantidade<ion-text style="color:red">*
+              </ion-text>
+            </ion-label>
+            <ion-input type="text" formControlName='disponivel'></ion-input>
+          </div>
+        </ion-item>
+        <span style='color:gray; font-size: 10px;margin-left: 5%;'
+          *ngIf="equipamentoForm.controls.descricao.hasError('required')">
+          Por favor insira a quantidade de Material*
+        </span>
+      <button class="mt btn centro-btn" style="background-color:#4aba70;margin-top:5% " expand="full" [disabled]="!equipamentoForm.valid" color="secondary"
+        (click)="addMaterial()">
         Salvar
       </button>
       <br>

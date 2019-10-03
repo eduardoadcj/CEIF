@@ -3,5 +3,6 @@ export class Material {
     descricao: string;
     quantidade:number;
     disponivel:number;
-    status: string;
+    idCategoria: string;
+    categoria:string;
 }

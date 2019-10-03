@@ -9,11 +9,16 @@ import { take } from 'rxjs/operators';
 })
 export class MateriaisService {
 
+  private materialCollection: AngularFirestoreCollection<Material> = this.afs.collection('material');
+
  
 
   constructor(private afs: AngularFirestore) { }
 
-
+  adicionarMaterial(material: Material) {
+    material.id = this.afs.createId();
+    return this.materialCollection.doc(material.id).set(material);
+  }
 
   
 }
