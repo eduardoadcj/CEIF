@@ -457,7 +457,7 @@ module.exports = webpackAsyncContext;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\n  <ion-menu contentId=\"content1\" side=\"start\">\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Jodisney</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    <ion-content>\n      <ion-list>\n        <ion-item>\n          <ion-icon name=\"contact\" slot=\"start\"></ion-icon>\n          <ion-label>Perfil</ion-label>\n        </ion-item>\n        <ion-item *ngIf=\"tipo\">\n          <ion-icon name=\"person-add\" slot=\"start\"></ion-icon>\n          <ion-label>Novo assistente</ion-label>\n        </ion-item>\n        <ion-item *ngIf=\"tipo\">\n          <ion-icon name=\"bookmarks\" slot=\"start\"></ion-icon>\n          <a routerLink=\"equipamento\">Equipamentos</a>\n        </ion-item>\n        <ion-item *ngIf=\"tipo\">\n          <ion-icon name=\"pricetag\" slot=\"start\" ></ion-icon>\n          <ion-label><a routerLink=\"/equipamento\">Categorias</a> </ion-label>\n        </ion-item>\n        <ion-item >\n          <ion-icon name=\"arrow-round-back\" slot=\"start\"></ion-icon>\n          <a (click)=\"deslogar()\" href=\"#\" style=\"color:red\">Sair</a> \n        </ion-item>\n\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-router-outlet id=\"content1\" main></ion-router-outlet>\n</ion-app>"
+module.exports = "<ion-app>\n  <ion-menu contentId=\"content1\" side=\"start\">\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Jodisney</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    <ion-content>\n      <ion-list>\n        <ion-item>\n          <ion-icon name=\"contact\" slot=\"start\"></ion-icon>\n          <ion-label>Perfil</ion-label>\n        </ion-item>\n        <ion-item *ngIf=\"tipo\">\n          <ion-icon name=\"person-add\" slot=\"start\"></ion-icon>\n          <ion-label>Novo assistente</ion-label>\n        </ion-item>\n        <ion-item *ngIf=\"tipo\">\n          <ion-icon name=\"bookmarks\" slot=\"start\"></ion-icon>\n          <a routerLink=\"/equipamento\">Equipamentos</a>\n        </ion-item>\n        <ion-item *ngIf=\"tipo\">\n          <ion-icon name=\"pricetag\" slot=\"start\" ></ion-icon>\n          <ion-label><a routerLink=\"/categoria\">Categorias</a> </ion-label>\n        </ion-item>\n        <ion-item >\n          <ion-icon name=\"arrow-round-back\" slot=\"start\"></ion-icon>\n          <a (click)=\"deslogar()\" href=\"#\" style=\"color:red\">Sair</a> \n        </ion-item>\n\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-router-outlet id=\"content1\" main></ion-router-outlet>\n</ion-app>"
 
 /***/ }),
 
@@ -483,6 +483,28 @@ module.exports = "<ion-app>\n  <ion-content padding>\n    <img class=\"img\" wid
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/equipamento/addcategoria/addcategoria.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/equipamento/addcategoria/addcategoria.component.html ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-app>\n  <ion-header>\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-back-button defaultHref=\"login\"></ion-back-button>\n      </ion-buttons>\n      <ion-title>Nova Categoria</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content padding>\n    <form [formGroup]=\"categoriaForm\">\n      <ion-item>\n        <div class=\"controls\">\n          <ion-label class=\"inputCustom\" position=\"floating\" >Nome da Categoria<ion-text style=\"color:red\">*</ion-text>\n          </ion-label>\n          <ion-input type=\"text\" formControlName='nome'></ion-input>\n        </div>\n      </ion-item>\n      <span style='color:gray; font-size: 10px;margin-left: 5%;' *ngIf=\"categoriaForm.controls.nome.hasError('required')\">\n        Por favor insira o nome da categoria*\n      </span>\n      <br>\n      <button class=\"mt btn centro-btn\" [disabled]=\"!categoriaForm.valid\" style=\"background-color:#4aba70;margin-top:5% \"\n        expand=\"full\" color=\"secondary\" (click)=\"addCategoria()\">\n        Salvar\n      </button>\n    </form>\n\n\n  </ion-content>\n</ion-app>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/equipamento/addequipamento/addequipamento.component.html":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/equipamento/addequipamento/addequipamento.component.html ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-app>\n  <ion-header>\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-back-button defaultHref=\"login\"></ion-back-button>\n      </ion-buttons>\n      <ion-title>Novo Material</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content padding>\n    <form [formGroup]=\"equipamentoForm\">\n      <ion-item>\n        <div class=\"controls\">\n          <ion-label class=\"inputCustom\" position=\"floating\">Descricao do Material<ion-text style=\"color:red\">*\n            </ion-text>\n          </ion-label>\n          <ion-input type=\"text\" formControlName='descricao'></ion-input>\n        </div>\n      </ion-item>\n      <span style='color:gray; font-size: 10px;margin-left: 5%;'\n        *ngIf=\"equipamentoForm.controls.descricao.hasError('required')\">\n        Por favor insira o nome do material*\n      </span>\n      <ion-item>\n        <ion-label>Categoria</ion-label>\n        <ion-select placeholder=\"Escolha\" formControlName=\"idCategoria\">\n          <ion-select-option *ngFor=\"let categoria of categorias$| async\" value=\"{{categoria.id}}\">{{categoria.nome}}\n          </ion-select-option>\n        </ion-select>\n      </ion-item>\n        <ion-item>\n          <div class=\"controls\">\n            <ion-label class=\"inputCustom\" position=\"floating\">Quantidade<ion-text style=\"color:red\">*\n              </ion-text>\n            </ion-label>\n            <ion-input type=\"text\" formControlName='disponivel'></ion-input>\n          </div>\n        </ion-item>\n        <span style='color:gray; font-size: 10px;margin-left: 5%;'\n          *ngIf=\"equipamentoForm.controls.descricao.hasError('required')\">\n          Por favor insira a quantidade de Material*\n        </span>\n      <button class=\"mt btn centro-btn\" style=\"background-color:#4aba70;margin-top:5% \" expand=\"full\" [disabled]=\"!equipamentoForm.valid\" color=\"secondary\"\n        (click)=\"addMaterial()\">\n        Salvar\n      </button>\n      <br>\n    </form>\n\n\n  </ion-content>\n</ion-app>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/equipamento/list-categoria/list-categoria.page.html":
 /*!***********************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/equipamento/list-categoria/list-categoria.page.html ***!
@@ -490,7 +512,29 @@ module.exports = "<ion-app>\n  <ion-content padding>\n    <img class=\"img\" wid
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"login\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>Categorias</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-searchbar></ion-searchbar>\n\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\n    <ion-fab-button color=\"success\">\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"login\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>Categorias</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-searchbar></ion-searchbar>\n  <ion-list>\n    <ion-item *ngFor=\"let categoria of categorias$| async\">\n      <ion-avatar slot=\"start\">\n        <img width=\"30px\" height=\"30px\"\n          src=\"https://blog.certisign.com.br/wp-content/uploads/2018/10/certo.png?cod_rev=38788\">\n      </ion-avatar>\n      <ion-label>\n        <h2>{{categoria.nome}}</h2>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\n    <ion-fab-button color=\"success\" routerLink=\"/addcategoria\">\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/equipamento/list-equipamento/list-equipamento.component.html":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/equipamento/list-equipamento/list-equipamento.component.html ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"login\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>Materiais</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-searchbar></ion-searchbar>\n  <ion-list>\n    <ion-card *ngFor=\"let material of materiais$| async\">\n      <ion-card-header>\n        <ion-card-subtitle>{{material.categoria}}</ion-card-subtitle>\n        <ion-card-title>{{material.descricao}}</ion-card-title>\n      </ion-card-header>\n  \n      <ion-card-content>\n        <div style=\"text-align:center\">\n          <h2 style=\"color:blue\">Quantidade: {{material.quantidade}}</h2>\n          <h3 style=\"color:green\">Disponível: {{material.disponivel}}</h3>\n        </div>\n      </ion-card-content>\n      <ion-button (click)=\"qrcode()\">Alterar</ion-button>\n    </ion-card>\n  </ion-list>\n  <ion-list>\n    <ion-item *ngFor=\"let material of materiais$| async\">\n      <ion-avatar slot=\"start\">\n        <img width=\"30px\" height=\"30px\"\n          src=\"https://blog.certisign.com.br/wp-content/uploads/2018/10/certo.png?cod_rev=38788\">\n      </ion-avatar>\n      <ion-label>\n        <h2>{{material.categoria}}</h2>\n        <h2><strong>{{material.descricao}}</strong></h2>\n        <h3>Quantidade: {{material.quantidade}}</h3>\n        <h3>Disponível: {{material.disponivel}}</h3>\n        <ion-button (click)=\"qrcode()\">Alterar</ion-button>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\n    <ion-fab-button color=\"success\" routerLink=\"/addEquipamento\">\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/splash/splash.component.html":
+/*!************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/splash/splash.component.html ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n</ion-header>\n\n<ion-content>\n  <div class=\"ion-padding centro\">\n    <img class=\"img\" src=\"../../assets/img/ceif.gif\">\n  </div>\n</ion-content>"
 
 /***/ }),
 
@@ -510,6 +554,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth/login/login.component */ "./src/app/auth/login/login.component.ts");
 /* harmony import */ var _equipamento_list_categoria_list_categoria_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./equipamento/list-categoria/list-categoria.page */ "./src/app/equipamento/list-categoria/list-categoria.page.ts");
 /* harmony import */ var _auth_recuperar_senha_recuperar_senha_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth/recuperar-senha/recuperar-senha.component */ "./src/app/auth/recuperar-senha/recuperar-senha.component.ts");
+/* harmony import */ var _splash_splash_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./splash/splash.component */ "./src/app/splash/splash.component.ts");
+/* harmony import */ var _equipamento_addcategoria_addcategoria_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./equipamento/addcategoria/addcategoria.component */ "./src/app/equipamento/addcategoria/addcategoria.component.ts");
+/* harmony import */ var _equipamento_addequipamento_addequipamento_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./equipamento/addequipamento/addequipamento.component */ "./src/app/equipamento/addequipamento/addequipamento.component.ts");
+/* harmony import */ var _equipamento_list_equipamento_list_equipamento_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./equipamento/list-equipamento/list-equipamento.component */ "./src/app/equipamento/list-equipamento/list-equipamento.component.ts");
+
+
+
+
 
 
 
@@ -517,12 +569,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: '', redirectTo: 'splash', pathMatch: 'full' },
+    { path: 'splash', component: _splash_splash_component__WEBPACK_IMPORTED_MODULE_6__["SplashComponent"] },
     { path: 'login', component: _auth_login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"] },
     { path: 'recuperarSenha', component: _auth_recuperar_senha_recuperar_senha_component__WEBPACK_IMPORTED_MODULE_5__["RecuperarSenhaComponent"] },
+    { path: 'addcategoria', component: _equipamento_addcategoria_addcategoria_component__WEBPACK_IMPORTED_MODULE_7__["AddcategoriaComponent"] },
+    { path: 'addEquipamento', component: _equipamento_addequipamento_addequipamento_component__WEBPACK_IMPORTED_MODULE_8__["AddequipamentoComponent"] },
+    { path: 'equipamento', component: _equipamento_list_equipamento_list_equipamento_component__WEBPACK_IMPORTED_MODULE_9__["ListEquipamentoComponent"] },
     { path: 'home', loadChildren: () => __webpack_require__.e(/*! import() | home-home-module */ "home-home-module").then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(m => m.HomePageModule) },
     { path: 'list-categoria', loadChildren: './equipamento/list-categoria/list-categoria.module#ListCategoriaPageModule' },
-    { path: 'equipamento', component: _equipamento_list_categoria_list_categoria_page__WEBPACK_IMPORTED_MODULE_4__["ListCategoriaPage"] },
+    { path: 'categoria', component: _equipamento_list_categoria_list_categoria_page__WEBPACK_IMPORTED_MODULE_4__["ListCategoriaPage"] },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -546,7 +602,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "a {\n  text-decoration: none;\n  color: black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsdW5vL0RvY3VtZW50b3MvQ0VJRi9zcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kscUJBQUE7RUFDQSxZQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhe1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICBjb2xvcjpibGFjaztcbn0iLCJhIHtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICBjb2xvcjogYmxhY2s7XG59Il19 */"
+module.exports = "a {\n  text-decoration: none;\n  color: black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsdW5vL0Rvd25sb2Fkcy9DRUlGL3NyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxxQkFBQTtFQUNBLFlBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImF7XG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgIGNvbG9yOmJsYWNrO1xufSIsImEge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gIGNvbG9yOiBibGFjaztcbn0iXX0= */"
 
 /***/ }),
 
@@ -644,8 +700,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_login_login_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./auth/login/login.component */ "./src/app/auth/login/login.component.ts");
 /* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
-/* harmony import */ var _equipamento_list_categoria_list_categoria_page__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./equipamento/list-categoria/list-categoria.page */ "./src/app/equipamento/list-categoria/list-categoria.page.ts");
-/* harmony import */ var _auth_recuperar_senha_recuperar_senha_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./auth/recuperar-senha/recuperar-senha.component */ "./src/app/auth/recuperar-senha/recuperar-senha.component.ts");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+/* harmony import */ var _equipamento_list_categoria_list_categoria_page__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./equipamento/list-categoria/list-categoria.page */ "./src/app/equipamento/list-categoria/list-categoria.page.ts");
+/* harmony import */ var _auth_recuperar_senha_recuperar_senha_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./auth/recuperar-senha/recuperar-senha.component */ "./src/app/auth/recuperar-senha/recuperar-senha.component.ts");
+/* harmony import */ var _splash_splash_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./splash/splash.component */ "./src/app/splash/splash.component.ts");
+/* harmony import */ var _equipamento_addcategoria_addcategoria_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./equipamento/addcategoria/addcategoria.component */ "./src/app/equipamento/addcategoria/addcategoria.component.ts");
+/* harmony import */ var _equipamento_addequipamento_addequipamento_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./equipamento/addequipamento/addequipamento.component */ "./src/app/equipamento/addequipamento/addequipamento.component.ts");
+/* harmony import */ var _equipamento_list_equipamento_list_equipamento_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./equipamento/list-equipamento/list-equipamento.component */ "./src/app/equipamento/list-equipamento/list-equipamento.component.ts");
 
 
 
@@ -664,11 +725,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _auth_login_login_component__WEBPACK_IMPORTED_MODULE_11__["LoginComponent"], _equipamento_list_categoria_list_categoria_page__WEBPACK_IMPORTED_MODULE_14__["ListCategoriaPage"], _auth_recuperar_senha_recuperar_senha_component__WEBPACK_IMPORTED_MODULE_15__["RecuperarSenhaComponent"]],
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _auth_login_login_component__WEBPACK_IMPORTED_MODULE_11__["LoginComponent"], _equipamento_list_categoria_list_categoria_page__WEBPACK_IMPORTED_MODULE_15__["ListCategoriaPage"], _auth_recuperar_senha_recuperar_senha_component__WEBPACK_IMPORTED_MODULE_16__["RecuperarSenhaComponent"], _splash_splash_component__WEBPACK_IMPORTED_MODULE_17__["SplashComponent"], _equipamento_addcategoria_addcategoria_component__WEBPACK_IMPORTED_MODULE_18__["AddcategoriaComponent"], _equipamento_addequipamento_addequipamento_component__WEBPACK_IMPORTED_MODULE_19__["AddequipamentoComponent"], _equipamento_list_equipamento_list_equipamento_component__WEBPACK_IMPORTED_MODULE_20__["ListEquipamentoComponent"]],
         entryComponents: [],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
@@ -677,12 +743,13 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_fire__WEBPACK_IMPORTED_MODULE_12__["AngularFireModule"].initializeApp(src_environments_environment__WEBPACK_IMPORTED_MODULE_9__["environment"].firebaseConfig),
             _angular_fire_auth__WEBPACK_IMPORTED_MODULE_13__["AngularFireAuthModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"]
+            _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"],
+            _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_14__["AngularFirestoreModule"],
         ],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
-            _auth_recuperar_senha_recuperar_senha_component__WEBPACK_IMPORTED_MODULE_15__["RecuperarSenhaComponent"],
+            _auth_recuperar_senha_recuperar_senha_component__WEBPACK_IMPORTED_MODULE_16__["RecuperarSenhaComponent"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
@@ -818,7 +885,7 @@ AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".center {\n  text-align: center;\n}\n\n.text-custom {\n  font-family: \"custom\";\n}\n\n.mt {\n  margin-top: 10 !important;\n}\n\n.link {\n  text-decoration: none;\n  color: grey;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.img {\n  max-width: 400px;\n  max-height: 200px;\n  width: auto;\n  height: auto;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.pad {\n  padding-top: 100px;\n}\n\n.btn {\n  color: #fff;\n  border-color: #0cd1e8;\n  background: #0cd1e8;\n  border-radius: 10rem;\n  padding: 0.75rem 1rem;\n}\n\n.btn:hover {\n  color: black;\n}\n\n.centro-btn {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  display: block;\n  width: 100%;\n}\n\n.fontCustom {\n  font-size: 14px;\n  margin-bottom: 5px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsdW5vL0RvY3VtZW50b3MvQ0VJRi9zcmMvYXBwL2F1dGgvbG9naW4vbG9naW4uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2F1dGgvbG9naW4vbG9naW4uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxrQkFBQTtBQ0NKOztBRENBO0VBQ0kscUJBQUE7QUNFSjs7QURBQTtFQUNJLHlCQUFBO0FDR0o7O0FEQUE7RUFDSSxxQkFBQTtFQUNBLFdBQUE7RUFDQSxjQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtBQ0dKOztBRERBO0VBQ0ksZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7QUNJSjs7QURGQTtFQUNJLGtCQUFBO0FDS0o7O0FERkE7RUFDSSxXQUFBO0VBQ0EscUJBQUE7RUFDQSxtQkFBQTtFQUNBLG9CQUFBO0VBQ0EscUJBQUE7QUNLSjs7QURGQTtFQUNJLFlBQUE7QUNLSjs7QURGQztFQUNHLGNBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBQ0EsY0FBQTtFQUNBLFdBQUE7QUNLSjs7QURIQTtFQUNJLGVBQUE7RUFDQSxrQkFBQTtBQ01KIiwiZmlsZSI6InNyYy9hcHAvYXV0aC9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZW50ZXJ7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuLnRleHQtY3VzdG9teyBcbiAgICBmb250LWZhbWlseTogXCJjdXN0b21cIjsgXG59XG4ubXR7ICBcbiAgICBtYXJnaW4tdG9wOiAxMCAhaW1wb3J0YW50O1xufVxuXG4ubGlua3tcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gICAgY29sb3I6IGdyZXk7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xufVxuLmltZyB7XG4gICAgbWF4LXdpZHRoOjQwMHB4O1xuICAgIG1heC1oZWlnaHQ6MjAwcHg7XG4gICAgd2lkdGg6IGF1dG87XG4gICAgaGVpZ2h0OiBhdXRvO1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICAgIG1hcmdpbi1yaWdodDogYXV0bztcbn1cbi5wYWR7XG4gICAgcGFkZGluZy10b3A6IDEwMHB4O1xufVxuXG4uYnRue1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIGJvcmRlci1jb2xvcjogIzBjZDFlODtcbiAgICBiYWNrZ3JvdW5kOiAjMGNkMWU4O1xuICAgIGJvcmRlci1yYWRpdXM6IDEwcmVtO1xuICAgIHBhZGRpbmc6IC43NXJlbSAxcmVtO1xufVxuXG4uYnRuOmhvdmVye1xuICAgIGNvbG9yOiBibGFjaztcbn1cblxuIC5jZW50cm8tYnRue1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICAgIG1hcmdpbi1yaWdodDogYXV0bztcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICB3aWR0aDogMTAwJTtcbn1cbi5mb250Q3VzdG9te1xuICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICBtYXJnaW4tYm90dG9tOiA1cHg7XG59IiwiLmNlbnRlciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLnRleHQtY3VzdG9tIHtcbiAgZm9udC1mYW1pbHk6IFwiY3VzdG9tXCI7XG59XG5cbi5tdCB7XG4gIG1hcmdpbi10b3A6IDEwICFpbXBvcnRhbnQ7XG59XG5cbi5saW5rIHtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICBjb2xvcjogZ3JleTtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG5cbi5pbWcge1xuICBtYXgtd2lkdGg6IDQwMHB4O1xuICBtYXgtaGVpZ2h0OiAyMDBweDtcbiAgd2lkdGg6IGF1dG87XG4gIGhlaWdodDogYXV0bztcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG5cbi5wYWQge1xuICBwYWRkaW5nLXRvcDogMTAwcHg7XG59XG5cbi5idG4ge1xuICBjb2xvcjogI2ZmZjtcbiAgYm9yZGVyLWNvbG9yOiAjMGNkMWU4O1xuICBiYWNrZ3JvdW5kOiAjMGNkMWU4O1xuICBib3JkZXItcmFkaXVzOiAxMHJlbTtcbiAgcGFkZGluZzogMC43NXJlbSAxcmVtO1xufVxuXG4uYnRuOmhvdmVyIHtcbiAgY29sb3I6IGJsYWNrO1xufVxuXG4uY2VudHJvLWJ0biB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBtYXJnaW4tbGVmdDogYXV0bztcbiAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5mb250Q3VzdG9tIHtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBtYXJnaW4tYm90dG9tOiA1cHg7XG59Il19 */"
+module.exports = ".center {\n  text-align: center;\n}\n\n.text-custom {\n  font-family: \"custom\";\n}\n\n.mt {\n  margin-top: 10 !important;\n}\n\n.link {\n  text-decoration: none;\n  color: grey;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.img {\n  max-width: 400px;\n  max-height: 200px;\n  width: auto;\n  height: auto;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.pad {\n  padding-top: 100px;\n}\n\n.btn {\n  color: #fff;\n  border-color: #0cd1e8;\n  background: #0cd1e8;\n  border-radius: 10rem;\n  padding: 0.75rem 1rem;\n}\n\n.btn:hover {\n  color: black;\n}\n\n.centro-btn {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  display: block;\n  width: 100%;\n}\n\n.fontCustom {\n  font-size: 14px;\n  margin-bottom: 5px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsdW5vL0Rvd25sb2Fkcy9DRUlGL3NyYy9hcHAvYXV0aC9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYXV0aC9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGtCQUFBO0FDQ0o7O0FEQ0E7RUFDSSxxQkFBQTtBQ0VKOztBREFBO0VBQ0kseUJBQUE7QUNHSjs7QURBQTtFQUNJLHFCQUFBO0VBQ0EsV0FBQTtFQUNBLGNBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0FDR0o7O0FEREE7RUFDSSxnQkFBQTtFQUNBLGlCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxjQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtBQ0lKOztBREZBO0VBQ0ksa0JBQUE7QUNLSjs7QURGQTtFQUNJLFdBQUE7RUFDQSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0Esb0JBQUE7RUFDQSxxQkFBQTtBQ0tKOztBREZBO0VBQ0ksWUFBQTtBQ0tKOztBREZDO0VBQ0csY0FBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxjQUFBO0VBQ0EsV0FBQTtBQ0tKOztBREhBO0VBQ0ksZUFBQTtFQUNBLGtCQUFBO0FDTUoiLCJmaWxlIjoic3JjL2FwcC9hdXRoL2xvZ2luL2xvZ2luLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNlbnRlcntcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4udGV4dC1jdXN0b217IFxuICAgIGZvbnQtZmFtaWx5OiBcImN1c3RvbVwiOyBcbn1cbi5tdHsgIFxuICAgIG1hcmdpbi10b3A6IDEwICFpbXBvcnRhbnQ7XG59XG5cbi5saW5re1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICBjb2xvcjogZ3JleTtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBtYXJnaW4tbGVmdDogYXV0bztcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG4uaW1nIHtcbiAgICBtYXgtd2lkdGg6NDAwcHg7XG4gICAgbWF4LWhlaWdodDoyMDBweDtcbiAgICB3aWR0aDogYXV0bztcbiAgICBoZWlnaHQ6IGF1dG87XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xufVxuLnBhZHtcbiAgICBwYWRkaW5nLXRvcDogMTAwcHg7XG59XG5cbi5idG57XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYm9yZGVyLWNvbG9yOiAjMGNkMWU4O1xuICAgIGJhY2tncm91bmQ6ICMwY2QxZTg7XG4gICAgYm9yZGVyLXJhZGl1czogMTByZW07XG4gICAgcGFkZGluZzogLjc1cmVtIDFyZW07XG59XG5cbi5idG46aG92ZXJ7XG4gICAgY29sb3I6IGJsYWNrO1xufVxuXG4gLmNlbnRyby1idG57XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHdpZHRoOiAxMDAlO1xufVxuLmZvbnRDdXN0b217XG4gICAgZm9udC1zaXplOiAxNHB4O1xuICAgIG1hcmdpbi1ib3R0b206IDVweDtcbn0iLCIuY2VudGVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4udGV4dC1jdXN0b20ge1xuICBmb250LWZhbWlseTogXCJjdXN0b21cIjtcbn1cblxuLm10IHtcbiAgbWFyZ2luLXRvcDogMTAgIWltcG9ydGFudDtcbn1cblxuLmxpbmsge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gIGNvbG9yOiBncmV5O1xuICBkaXNwbGF5OiBibG9jaztcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbn1cblxuLmltZyB7XG4gIG1heC13aWR0aDogNDAwcHg7XG4gIG1heC1oZWlnaHQ6IDIwMHB4O1xuICB3aWR0aDogYXV0bztcbiAgaGVpZ2h0OiBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbn1cblxuLnBhZCB7XG4gIHBhZGRpbmctdG9wOiAxMDBweDtcbn1cblxuLmJ0biB7XG4gIGNvbG9yOiAjZmZmO1xuICBib3JkZXItY29sb3I6ICMwY2QxZTg7XG4gIGJhY2tncm91bmQ6ICMwY2QxZTg7XG4gIGJvcmRlci1yYWRpdXM6IDEwcmVtO1xuICBwYWRkaW5nOiAwLjc1cmVtIDFyZW07XG59XG5cbi5idG46aG92ZXIge1xuICBjb2xvcjogYmxhY2s7XG59XG5cbi5jZW50cm8tYnRuIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG4gIGRpc3BsYXk6IGJsb2NrO1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmZvbnRDdXN0b20ge1xuICBmb250LXNpemU6IDE0cHg7XG4gIG1hcmdpbi1ib3R0b206IDVweDtcbn0iXX0= */"
 
 /***/ }),
 
@@ -890,7 +957,7 @@ LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".center {\n  text-align: center;\n}\n\n.text-custom {\n  font-family: \"custom\";\n}\n\n.mt {\n  margin-top: 10 !important;\n}\n\n.link {\n  text-decoration: none;\n  color: grey;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.img {\n  max-width: 400px;\n  max-height: 200px;\n  width: auto;\n  height: auto;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.pad {\n  padding-top: 100px;\n}\n\n.btn {\n  color: #fff;\n  border-color: #0cd1e8;\n  background: #0cd1e8;\n  border-radius: 10rem;\n  padding: 0.75rem 1rem;\n}\n\n.btn:hover {\n  color: black;\n}\n\n.centro-btn {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  display: block;\n  width: 100%;\n}\n\n.fontCustom {\n  font-size: 14px;\n  margin-bottom: 5px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsdW5vL0RvY3VtZW50b3MvQ0VJRi9zcmMvYXBwL2F1dGgvcmVjdXBlcmFyLXNlbmhhL3JlY3VwZXJhci1zZW5oYS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYXV0aC9yZWN1cGVyYXItc2VuaGEvcmVjdXBlcmFyLXNlbmhhLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7QUNDSjs7QURDQTtFQUNJLHFCQUFBO0FDRUo7O0FEQUE7RUFDSSx5QkFBQTtBQ0dKOztBREFBO0VBQ0kscUJBQUE7RUFDQSxXQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7QUNHSjs7QUREQTtFQUNJLGdCQUFBO0VBQ0EsaUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGNBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0FDSUo7O0FERkE7RUFDSSxrQkFBQTtBQ0tKOztBREZBO0VBQ0ksV0FBQTtFQUNBLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxvQkFBQTtFQUNBLHFCQUFBO0FDS0o7O0FERkE7RUFDSSxZQUFBO0FDS0o7O0FERkM7RUFDRyxjQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLGNBQUE7RUFDQSxXQUFBO0FDS0o7O0FESEE7RUFDSSxlQUFBO0VBQ0Esa0JBQUE7QUNNSiIsImZpbGUiOiJzcmMvYXBwL2F1dGgvcmVjdXBlcmFyLXNlbmhhL3JlY3VwZXJhci1zZW5oYS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZW50ZXJ7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuLnRleHQtY3VzdG9teyBcbiAgICBmb250LWZhbWlseTogXCJjdXN0b21cIjsgXG59XG4ubXR7ICBcbiAgICBtYXJnaW4tdG9wOiAxMCAhaW1wb3J0YW50O1xufVxuXG4ubGlua3tcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gICAgY29sb3I6IGdyZXk7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xufVxuLmltZyB7XG4gICAgbWF4LXdpZHRoOjQwMHB4O1xuICAgIG1heC1oZWlnaHQ6MjAwcHg7XG4gICAgd2lkdGg6IGF1dG87XG4gICAgaGVpZ2h0OiBhdXRvO1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICAgIG1hcmdpbi1yaWdodDogYXV0bztcbn1cbi5wYWR7XG4gICAgcGFkZGluZy10b3A6IDEwMHB4O1xufVxuXG4uYnRue1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIGJvcmRlci1jb2xvcjogIzBjZDFlODtcbiAgICBiYWNrZ3JvdW5kOiAjMGNkMWU4O1xuICAgIGJvcmRlci1yYWRpdXM6IDEwcmVtO1xuICAgIHBhZGRpbmc6IC43NXJlbSAxcmVtO1xufVxuXG4uYnRuOmhvdmVye1xuICAgIGNvbG9yOiBibGFjaztcbn1cblxuIC5jZW50cm8tYnRue1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICAgIG1hcmdpbi1yaWdodDogYXV0bztcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICB3aWR0aDogMTAwJTtcbn1cbi5mb250Q3VzdG9te1xuICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICBtYXJnaW4tYm90dG9tOiA1cHg7XG59IiwiLmNlbnRlciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLnRleHQtY3VzdG9tIHtcbiAgZm9udC1mYW1pbHk6IFwiY3VzdG9tXCI7XG59XG5cbi5tdCB7XG4gIG1hcmdpbi10b3A6IDEwICFpbXBvcnRhbnQ7XG59XG5cbi5saW5rIHtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICBjb2xvcjogZ3JleTtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG5cbi5pbWcge1xuICBtYXgtd2lkdGg6IDQwMHB4O1xuICBtYXgtaGVpZ2h0OiAyMDBweDtcbiAgd2lkdGg6IGF1dG87XG4gIGhlaWdodDogYXV0bztcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG5cbi5wYWQge1xuICBwYWRkaW5nLXRvcDogMTAwcHg7XG59XG5cbi5idG4ge1xuICBjb2xvcjogI2ZmZjtcbiAgYm9yZGVyLWNvbG9yOiAjMGNkMWU4O1xuICBiYWNrZ3JvdW5kOiAjMGNkMWU4O1xuICBib3JkZXItcmFkaXVzOiAxMHJlbTtcbiAgcGFkZGluZzogMC43NXJlbSAxcmVtO1xufVxuXG4uYnRuOmhvdmVyIHtcbiAgY29sb3I6IGJsYWNrO1xufVxuXG4uY2VudHJvLWJ0biB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBtYXJnaW4tbGVmdDogYXV0bztcbiAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5mb250Q3VzdG9tIHtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBtYXJnaW4tYm90dG9tOiA1cHg7XG59Il19 */"
+module.exports = ".center {\n  text-align: center;\n}\n\n.text-custom {\n  font-family: \"custom\";\n}\n\n.mt {\n  margin-top: 10 !important;\n}\n\n.link {\n  text-decoration: none;\n  color: grey;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.img {\n  max-width: 400px;\n  max-height: 200px;\n  width: auto;\n  height: auto;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.pad {\n  padding-top: 100px;\n}\n\n.btn {\n  color: #fff;\n  border-color: #0cd1e8;\n  background: #0cd1e8;\n  border-radius: 10rem;\n  padding: 0.75rem 1rem;\n}\n\n.btn:hover {\n  color: black;\n}\n\n.centro-btn {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  display: block;\n  width: 100%;\n}\n\n.fontCustom {\n  font-size: 14px;\n  margin-bottom: 5px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsdW5vL0Rvd25sb2Fkcy9DRUlGL3NyYy9hcHAvYXV0aC9yZWN1cGVyYXItc2VuaGEvcmVjdXBlcmFyLXNlbmhhLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hdXRoL3JlY3VwZXJhci1zZW5oYS9yZWN1cGVyYXItc2VuaGEuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxrQkFBQTtBQ0NKOztBRENBO0VBQ0kscUJBQUE7QUNFSjs7QURBQTtFQUNJLHlCQUFBO0FDR0o7O0FEQUE7RUFDSSxxQkFBQTtFQUNBLFdBQUE7RUFDQSxjQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtBQ0dKOztBRERBO0VBQ0ksZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7QUNJSjs7QURGQTtFQUNJLGtCQUFBO0FDS0o7O0FERkE7RUFDSSxXQUFBO0VBQ0EscUJBQUE7RUFDQSxtQkFBQTtFQUNBLG9CQUFBO0VBQ0EscUJBQUE7QUNLSjs7QURGQTtFQUNJLFlBQUE7QUNLSjs7QURGQztFQUNHLGNBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBQ0EsY0FBQTtFQUNBLFdBQUE7QUNLSjs7QURIQTtFQUNJLGVBQUE7RUFDQSxrQkFBQTtBQ01KIiwiZmlsZSI6InNyYy9hcHAvYXV0aC9yZWN1cGVyYXItc2VuaGEvcmVjdXBlcmFyLXNlbmhhLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNlbnRlcntcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4udGV4dC1jdXN0b217IFxuICAgIGZvbnQtZmFtaWx5OiBcImN1c3RvbVwiOyBcbn1cbi5tdHsgIFxuICAgIG1hcmdpbi10b3A6IDEwICFpbXBvcnRhbnQ7XG59XG5cbi5saW5re1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICBjb2xvcjogZ3JleTtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBtYXJnaW4tbGVmdDogYXV0bztcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG4uaW1nIHtcbiAgICBtYXgtd2lkdGg6NDAwcHg7XG4gICAgbWF4LWhlaWdodDoyMDBweDtcbiAgICB3aWR0aDogYXV0bztcbiAgICBoZWlnaHQ6IGF1dG87XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xufVxuLnBhZHtcbiAgICBwYWRkaW5nLXRvcDogMTAwcHg7XG59XG5cbi5idG57XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYm9yZGVyLWNvbG9yOiAjMGNkMWU4O1xuICAgIGJhY2tncm91bmQ6ICMwY2QxZTg7XG4gICAgYm9yZGVyLXJhZGl1czogMTByZW07XG4gICAgcGFkZGluZzogLjc1cmVtIDFyZW07XG59XG5cbi5idG46aG92ZXJ7XG4gICAgY29sb3I6IGJsYWNrO1xufVxuXG4gLmNlbnRyby1idG57XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHdpZHRoOiAxMDAlO1xufVxuLmZvbnRDdXN0b217XG4gICAgZm9udC1zaXplOiAxNHB4O1xuICAgIG1hcmdpbi1ib3R0b206IDVweDtcbn0iLCIuY2VudGVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4udGV4dC1jdXN0b20ge1xuICBmb250LWZhbWlseTogXCJjdXN0b21cIjtcbn1cblxuLm10IHtcbiAgbWFyZ2luLXRvcDogMTAgIWltcG9ydGFudDtcbn1cblxuLmxpbmsge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gIGNvbG9yOiBncmV5O1xuICBkaXNwbGF5OiBibG9jaztcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbn1cblxuLmltZyB7XG4gIG1heC13aWR0aDogNDAwcHg7XG4gIG1heC1oZWlnaHQ6IDIwMHB4O1xuICB3aWR0aDogYXV0bztcbiAgaGVpZ2h0OiBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbn1cblxuLnBhZCB7XG4gIHBhZGRpbmctdG9wOiAxMDBweDtcbn1cblxuLmJ0biB7XG4gIGNvbG9yOiAjZmZmO1xuICBib3JkZXItY29sb3I6ICMwY2QxZTg7XG4gIGJhY2tncm91bmQ6ICMwY2QxZTg7XG4gIGJvcmRlci1yYWRpdXM6IDEwcmVtO1xuICBwYWRkaW5nOiAwLjc1cmVtIDFyZW07XG59XG5cbi5idG46aG92ZXIge1xuICBjb2xvcjogYmxhY2s7XG59XG5cbi5jZW50cm8tYnRuIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG4gIGRpc3BsYXk6IGJsb2NrO1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmZvbnRDdXN0b20ge1xuICBmb250LXNpemU6IDE0cHg7XG4gIG1hcmdpbi1ib3R0b206IDVweDtcbn0iXX0= */"
 
 /***/ }),
 
@@ -943,6 +1010,230 @@ RecuperarSenhaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/equipamento/addcategoria/addcategoria.component.scss":
+/*!**********************************************************************!*\
+  !*** ./src/app/equipamento/addcategoria/addcategoria.component.scss ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".center {\n  text-align: center;\n}\n\n.text-custom {\n  font-family: \"custom\";\n}\n\n.mt {\n  margin-top: 10 !important;\n}\n\n.link {\n  text-decoration: none;\n  color: grey;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.img {\n  max-width: 400px;\n  max-height: 200px;\n  width: auto;\n  height: auto;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.pad {\n  padding-top: 100px;\n}\n\n.btn {\n  color: #fff;\n  border-color: #0cd1e8;\n  background: #0cd1e8;\n  border-radius: 10rem;\n  padding: 0.75rem 1rem;\n}\n\n.btn:hover {\n  color: black;\n}\n\n.centro-btn {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  display: block;\n  width: 100%;\n}\n\n.fontCustom {\n  font-size: 14px;\n  margin-bottom: 5px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsdW5vL0Rvd25sb2Fkcy9DRUlGL3NyYy9hcHAvZXF1aXBhbWVudG8vYWRkY2F0ZWdvcmlhL2FkZGNhdGVnb3JpYS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvZXF1aXBhbWVudG8vYWRkY2F0ZWdvcmlhL2FkZGNhdGVnb3JpYS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGtCQUFBO0FDQ0o7O0FEQ0E7RUFDSSxxQkFBQTtBQ0VKOztBREFBO0VBQ0kseUJBQUE7QUNHSjs7QURBQTtFQUNJLHFCQUFBO0VBQ0EsV0FBQTtFQUNBLGNBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0FDR0o7O0FEREE7RUFDSSxnQkFBQTtFQUNBLGlCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxjQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtBQ0lKOztBREZBO0VBQ0ksa0JBQUE7QUNLSjs7QURGQTtFQUNJLFdBQUE7RUFDQSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0Esb0JBQUE7RUFDQSxxQkFBQTtBQ0tKOztBREZBO0VBQ0ksWUFBQTtBQ0tKOztBREZDO0VBQ0csY0FBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxjQUFBO0VBQ0EsV0FBQTtBQ0tKOztBREhBO0VBQ0ksZUFBQTtFQUNBLGtCQUFBO0FDTUoiLCJmaWxlIjoic3JjL2FwcC9lcXVpcGFtZW50by9hZGRjYXRlZ29yaWEvYWRkY2F0ZWdvcmlhLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNlbnRlcntcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4udGV4dC1jdXN0b217IFxuICAgIGZvbnQtZmFtaWx5OiBcImN1c3RvbVwiOyBcbn1cbi5tdHsgIFxuICAgIG1hcmdpbi10b3A6IDEwICFpbXBvcnRhbnQ7XG59XG5cbi5saW5re1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICBjb2xvcjogZ3JleTtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBtYXJnaW4tbGVmdDogYXV0bztcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG4uaW1nIHtcbiAgICBtYXgtd2lkdGg6NDAwcHg7XG4gICAgbWF4LWhlaWdodDoyMDBweDtcbiAgICB3aWR0aDogYXV0bztcbiAgICBoZWlnaHQ6IGF1dG87XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xufVxuLnBhZHtcbiAgICBwYWRkaW5nLXRvcDogMTAwcHg7XG59XG5cbi5idG57XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYm9yZGVyLWNvbG9yOiAjMGNkMWU4O1xuICAgIGJhY2tncm91bmQ6ICMwY2QxZTg7XG4gICAgYm9yZGVyLXJhZGl1czogMTByZW07XG4gICAgcGFkZGluZzogLjc1cmVtIDFyZW07XG59XG5cbi5idG46aG92ZXJ7XG4gICAgY29sb3I6IGJsYWNrO1xufVxuXG4gLmNlbnRyby1idG57XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHdpZHRoOiAxMDAlO1xufVxuLmZvbnRDdXN0b217XG4gICAgZm9udC1zaXplOiAxNHB4O1xuICAgIG1hcmdpbi1ib3R0b206IDVweDtcbn0iLCIuY2VudGVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4udGV4dC1jdXN0b20ge1xuICBmb250LWZhbWlseTogXCJjdXN0b21cIjtcbn1cblxuLm10IHtcbiAgbWFyZ2luLXRvcDogMTAgIWltcG9ydGFudDtcbn1cblxuLmxpbmsge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gIGNvbG9yOiBncmV5O1xuICBkaXNwbGF5OiBibG9jaztcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbn1cblxuLmltZyB7XG4gIG1heC13aWR0aDogNDAwcHg7XG4gIG1heC1oZWlnaHQ6IDIwMHB4O1xuICB3aWR0aDogYXV0bztcbiAgaGVpZ2h0OiBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbn1cblxuLnBhZCB7XG4gIHBhZGRpbmctdG9wOiAxMDBweDtcbn1cblxuLmJ0biB7XG4gIGNvbG9yOiAjZmZmO1xuICBib3JkZXItY29sb3I6ICMwY2QxZTg7XG4gIGJhY2tncm91bmQ6ICMwY2QxZTg7XG4gIGJvcmRlci1yYWRpdXM6IDEwcmVtO1xuICBwYWRkaW5nOiAwLjc1cmVtIDFyZW07XG59XG5cbi5idG46aG92ZXIge1xuICBjb2xvcjogYmxhY2s7XG59XG5cbi5jZW50cm8tYnRuIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG4gIGRpc3BsYXk6IGJsb2NrO1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmZvbnRDdXN0b20ge1xuICBmb250LXNpemU6IDE0cHg7XG4gIG1hcmdpbi1ib3R0b206IDVweDtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/equipamento/addcategoria/addcategoria.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/equipamento/addcategoria/addcategoria.component.ts ***!
+  \********************************************************************/
+/*! exports provided: AddcategoriaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddcategoriaComponent", function() { return AddcategoriaComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var src_app_service_categorias_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/categorias.service */ "./src/app/service/categorias.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+
+
+let AddcategoriaComponent = class AddcategoriaComponent {
+    constructor(fb, categoriaService, alertController, router) {
+        this.fb = fb;
+        this.categoriaService = categoriaService;
+        this.alertController = alertController;
+        this.router = router;
+        this.categoriaForm = this.fb.group({
+            id: [undefined],
+            nome: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+        });
+    }
+    ngOnInit() { }
+    addCategoria() {
+        const categoria = this.categoriaForm.value;
+        this.categoriaService.adicionarCategoria(categoria).then(() => {
+            this.presentCategoriaCadastrado();
+            this.categoriaForm.reset();
+            this.router.navigate(['/categoria']);
+        }).catch(() => {
+            this.presentErroCategoriaCadastrado();
+        });
+    }
+    presentCategoriaCadastrado() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const alert = yield this.alertController.create({
+                header: 'Sucesso',
+                message: 'Categoria cadastrada!!',
+                buttons: ['OK']
+            });
+            yield alert.present();
+        });
+    }
+    presentErroCategoriaCadastrado() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const alert = yield this.alertController.create({
+                header: 'Sucesso',
+                message: 'Erro ao cadastrar categoria!!',
+                buttons: ['OK']
+            });
+            yield alert.present();
+        });
+    }
+};
+AddcategoriaComponent.ctorParameters = () => [
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+    { type: src_app_service_categorias_service__WEBPACK_IMPORTED_MODULE_3__["CategoriasService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
+];
+AddcategoriaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-addcategoria',
+        template: __webpack_require__(/*! raw-loader!./addcategoria.component.html */ "./node_modules/raw-loader/index.js!./src/app/equipamento/addcategoria/addcategoria.component.html"),
+        styles: [__webpack_require__(/*! ./addcategoria.component.scss */ "./src/app/equipamento/addcategoria/addcategoria.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], src_app_service_categorias_service__WEBPACK_IMPORTED_MODULE_3__["CategoriasService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+], AddcategoriaComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/equipamento/addequipamento/addequipamento.component.scss":
+/*!**************************************************************************!*\
+  !*** ./src/app/equipamento/addequipamento/addequipamento.component.scss ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".center {\n  text-align: center;\n}\n\n.text-custom {\n  font-family: \"custom\";\n}\n\n.mt {\n  margin-top: 10 !important;\n}\n\n.link {\n  text-decoration: none;\n  color: grey;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.img {\n  max-width: 400px;\n  max-height: 200px;\n  width: auto;\n  height: auto;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.pad {\n  padding-top: 100px;\n}\n\n.btn {\n  color: #fff;\n  border-color: #0cd1e8;\n  background: #0cd1e8;\n  border-radius: 10rem;\n  padding: 0.75rem 1rem;\n}\n\n.btn:hover {\n  color: black;\n}\n\n.centro-btn {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  display: block;\n  width: 100%;\n}\n\n.fontCustom {\n  font-size: 14px;\n  margin-bottom: 5px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsdW5vL0Rvd25sb2Fkcy9DRUlGL3NyYy9hcHAvZXF1aXBhbWVudG8vYWRkZXF1aXBhbWVudG8vYWRkZXF1aXBhbWVudG8uY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2VxdWlwYW1lbnRvL2FkZGVxdWlwYW1lbnRvL2FkZGVxdWlwYW1lbnRvLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7QUNDSjs7QURDQTtFQUNJLHFCQUFBO0FDRUo7O0FEQUE7RUFDSSx5QkFBQTtBQ0dKOztBREFBO0VBQ0kscUJBQUE7RUFDQSxXQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7QUNHSjs7QUREQTtFQUNJLGdCQUFBO0VBQ0EsaUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGNBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0FDSUo7O0FERkE7RUFDSSxrQkFBQTtBQ0tKOztBREZBO0VBQ0ksV0FBQTtFQUNBLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxvQkFBQTtFQUNBLHFCQUFBO0FDS0o7O0FERkE7RUFDSSxZQUFBO0FDS0o7O0FERkM7RUFDRyxjQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLGNBQUE7RUFDQSxXQUFBO0FDS0o7O0FESEE7RUFDSSxlQUFBO0VBQ0Esa0JBQUE7QUNNSiIsImZpbGUiOiJzcmMvYXBwL2VxdWlwYW1lbnRvL2FkZGVxdWlwYW1lbnRvL2FkZGVxdWlwYW1lbnRvLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNlbnRlcntcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4udGV4dC1jdXN0b217IFxuICAgIGZvbnQtZmFtaWx5OiBcImN1c3RvbVwiOyBcbn1cbi5tdHsgIFxuICAgIG1hcmdpbi10b3A6IDEwICFpbXBvcnRhbnQ7XG59XG5cbi5saW5re1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICBjb2xvcjogZ3JleTtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBtYXJnaW4tbGVmdDogYXV0bztcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG4uaW1nIHtcbiAgICBtYXgtd2lkdGg6NDAwcHg7XG4gICAgbWF4LWhlaWdodDoyMDBweDtcbiAgICB3aWR0aDogYXV0bztcbiAgICBoZWlnaHQ6IGF1dG87XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xufVxuLnBhZHtcbiAgICBwYWRkaW5nLXRvcDogMTAwcHg7XG59XG5cbi5idG57XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYm9yZGVyLWNvbG9yOiAjMGNkMWU4O1xuICAgIGJhY2tncm91bmQ6ICMwY2QxZTg7XG4gICAgYm9yZGVyLXJhZGl1czogMTByZW07XG4gICAgcGFkZGluZzogLjc1cmVtIDFyZW07XG59XG5cbi5idG46aG92ZXJ7XG4gICAgY29sb3I6IGJsYWNrO1xufVxuXG4gLmNlbnRyby1idG57XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHdpZHRoOiAxMDAlO1xufVxuLmZvbnRDdXN0b217XG4gICAgZm9udC1zaXplOiAxNHB4O1xuICAgIG1hcmdpbi1ib3R0b206IDVweDtcbn0iLCIuY2VudGVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4udGV4dC1jdXN0b20ge1xuICBmb250LWZhbWlseTogXCJjdXN0b21cIjtcbn1cblxuLm10IHtcbiAgbWFyZ2luLXRvcDogMTAgIWltcG9ydGFudDtcbn1cblxuLmxpbmsge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gIGNvbG9yOiBncmV5O1xuICBkaXNwbGF5OiBibG9jaztcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbn1cblxuLmltZyB7XG4gIG1heC13aWR0aDogNDAwcHg7XG4gIG1heC1oZWlnaHQ6IDIwMHB4O1xuICB3aWR0aDogYXV0bztcbiAgaGVpZ2h0OiBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbn1cblxuLnBhZCB7XG4gIHBhZGRpbmctdG9wOiAxMDBweDtcbn1cblxuLmJ0biB7XG4gIGNvbG9yOiAjZmZmO1xuICBib3JkZXItY29sb3I6ICMwY2QxZTg7XG4gIGJhY2tncm91bmQ6ICMwY2QxZTg7XG4gIGJvcmRlci1yYWRpdXM6IDEwcmVtO1xuICBwYWRkaW5nOiAwLjc1cmVtIDFyZW07XG59XG5cbi5idG46aG92ZXIge1xuICBjb2xvcjogYmxhY2s7XG59XG5cbi5jZW50cm8tYnRuIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG4gIGRpc3BsYXk6IGJsb2NrO1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmZvbnRDdXN0b20ge1xuICBmb250LXNpemU6IDE0cHg7XG4gIG1hcmdpbi1ib3R0b206IDVweDtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/equipamento/addequipamento/addequipamento.component.ts":
+/*!************************************************************************!*\
+  !*** ./src/app/equipamento/addequipamento/addequipamento.component.ts ***!
+  \************************************************************************/
+/*! exports provided: AddequipamentoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddequipamentoComponent", function() { return AddequipamentoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var src_app_service_categorias_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/categorias.service */ "./src/app/service/categorias.service.ts");
+/* harmony import */ var src_app_service_materiais_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/materiais.service */ "./src/app/service/materiais.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+
+
+
+let AddequipamentoComponent = class AddequipamentoComponent {
+    constructor(fb, categoriaService, materiaisService, alertController, router) {
+        this.fb = fb;
+        this.categoriaService = categoriaService;
+        this.materiaisService = materiaisService;
+        this.alertController = alertController;
+        this.router = router;
+        this.equipamentoForm = this.fb.group({
+            id: [undefined],
+            descricao: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+            quantidade: ['', []],
+            disponivel: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+            idCategoria: ['', []],
+        });
+    }
+    ngOnInit() {
+        this.categorias$ = this.categoriaService.listarCategoria();
+    }
+    addMaterial() {
+        if (this.equipamentoForm.value.idCategoria == null || this.equipamentoForm.value.idCategoria == '') {
+            this.presentErroMaterialCadastrado();
+        }
+        else {
+            this.categoriaService.buscarPorId(this.equipamentoForm.value.idCategoria, (nome) => {
+                let material = {
+                    id: this.equipamentoForm.value.id,
+                    descricao: this.equipamentoForm.value.descricao,
+                    categoria: nome,
+                    idCategoria: this.equipamentoForm.value.idCategoria,
+                    disponivel: this.equipamentoForm.value.disponivel,
+                    quantidade: this.equipamentoForm.value.disponivel
+                };
+                this.materiaisService.adicionarMaterial(material);
+                this.equipamentoForm.reset();
+            });
+            this.router.navigate(['/equipamento']);
+            this.presentMaterialCadastrado();
+        }
+    }
+    presentErrorCategoria() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const alert = yield this.alertController.create({
+                header: 'Sucesso',
+                message: '<strong>Por favor selecione uma categoria!!</strong>',
+                buttons: ['OK']
+            });
+            yield alert.present();
+        });
+    }
+    presentMaterialCadastrado() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const alert = yield this.alertController.create({
+                header: 'Sucesso',
+                message: 'Material cadastrada!!',
+                buttons: ['OK']
+            });
+            yield alert.present();
+        });
+    }
+    presentErroMaterialCadastrado() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const alert = yield this.alertController.create({
+                header: 'Sucesso',
+                message: 'Erro ao cadastrar material!!',
+                buttons: ['OK']
+            });
+            yield alert.present();
+        });
+    }
+};
+AddequipamentoComponent.ctorParameters = () => [
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+    { type: src_app_service_categorias_service__WEBPACK_IMPORTED_MODULE_3__["CategoriasService"] },
+    { type: src_app_service_materiais_service__WEBPACK_IMPORTED_MODULE_4__["MateriaisService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
+];
+AddequipamentoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-addequipamento',
+        template: __webpack_require__(/*! raw-loader!./addequipamento.component.html */ "./node_modules/raw-loader/index.js!./src/app/equipamento/addequipamento/addequipamento.component.html"),
+        styles: [__webpack_require__(/*! ./addequipamento.component.scss */ "./src/app/equipamento/addequipamento/addequipamento.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
+        src_app_service_categorias_service__WEBPACK_IMPORTED_MODULE_3__["CategoriasService"],
+        src_app_service_materiais_service__WEBPACK_IMPORTED_MODULE_4__["MateriaisService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
+], AddequipamentoComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/equipamento/list-categoria/list-categoria.page.scss":
 /*!*********************************************************************!*\
   !*** ./src/app/equipamento/list-categoria/list-categoria.page.scss ***!
@@ -966,21 +1257,229 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListCategoriaPage", function() { return ListCategoriaPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_service_categorias_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/service/categorias.service */ "./src/app/service/categorias.service.ts");
+
 
 
 let ListCategoriaPage = class ListCategoriaPage {
-    constructor() { }
+    constructor(categoriaService) {
+        this.categoriaService = categoriaService;
+    }
     ngOnInit() {
+        this.categorias$ = this.categoriaService.listarCategoria();
     }
 };
+ListCategoriaPage.ctorParameters = () => [
+    { type: src_app_service_categorias_service__WEBPACK_IMPORTED_MODULE_2__["CategoriasService"] }
+];
 ListCategoriaPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-list-categoria',
         template: __webpack_require__(/*! raw-loader!./list-categoria.page.html */ "./node_modules/raw-loader/index.js!./src/app/equipamento/list-categoria/list-categoria.page.html"),
         styles: [__webpack_require__(/*! ./list-categoria.page.scss */ "./src/app/equipamento/list-categoria/list-categoria.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_service_categorias_service__WEBPACK_IMPORTED_MODULE_2__["CategoriasService"]])
 ], ListCategoriaPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/equipamento/list-equipamento/list-equipamento.component.scss":
+/*!******************************************************************************!*\
+  !*** ./src/app/equipamento/list-equipamento/list-equipamento.component.scss ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2VxdWlwYW1lbnRvL2xpc3QtZXF1aXBhbWVudG8vbGlzdC1lcXVpcGFtZW50by5jb21wb25lbnQuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/equipamento/list-equipamento/list-equipamento.component.ts":
+/*!****************************************************************************!*\
+  !*** ./src/app/equipamento/list-equipamento/list-equipamento.component.ts ***!
+  \****************************************************************************/
+/*! exports provided: ListEquipamentoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListEquipamentoComponent", function() { return ListEquipamentoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_service_materiais_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/service/materiais.service */ "./src/app/service/materiais.service.ts");
+
+
+
+let ListEquipamentoComponent = class ListEquipamentoComponent {
+    constructor(materiaisService) {
+        this.materiaisService = materiaisService;
+    }
+    ngOnInit() {
+        this.materiais$ = this.materiaisService.listarMaterial();
+    }
+};
+ListEquipamentoComponent.ctorParameters = () => [
+    { type: src_app_service_materiais_service__WEBPACK_IMPORTED_MODULE_2__["MateriaisService"] }
+];
+ListEquipamentoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-list-equipamento',
+        template: __webpack_require__(/*! raw-loader!./list-equipamento.component.html */ "./node_modules/raw-loader/index.js!./src/app/equipamento/list-equipamento/list-equipamento.component.html"),
+        styles: [__webpack_require__(/*! ./list-equipamento.component.scss */ "./src/app/equipamento/list-equipamento/list-equipamento.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_service_materiais_service__WEBPACK_IMPORTED_MODULE_2__["MateriaisService"]])
+], ListEquipamentoComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/service/categorias.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/service/categorias.service.ts ***!
+  \***********************************************/
+/*! exports provided: CategoriasService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoriasService", function() { return CategoriasService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
+
+
+let CategoriasService = class CategoriasService {
+    constructor(afs) {
+        this.afs = afs;
+        this.categoriaCollection = this.afs.collection('categoria');
+    }
+    adicionarCategoria(categoria) {
+        categoria.id = this.afs.createId();
+        return this.categoriaCollection.doc(categoria.id).set(categoria);
+    }
+    listarCategoria() {
+        return this.categoriaCollection.valueChanges();
+    }
+    buscarPorId(key, onComplete) {
+        let categoriaDoc = this.afs.doc('categoria/' + key + '');
+        categoriaDoc.valueChanges()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["take"])(1))
+            .subscribe(material => {
+            onComplete(material.nome);
+        });
+    }
+};
+CategoriasService.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
+];
+CategoriasService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"]])
+], CategoriasService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/service/materiais.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/service/materiais.service.ts ***!
+  \**********************************************/
+/*! exports provided: MateriaisService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MateriaisService", function() { return MateriaisService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+
+
+
+let MateriaisService = class MateriaisService {
+    constructor(afs) {
+        this.afs = afs;
+        this.materialCollection = this.afs.collection('material');
+    }
+    adicionarMaterial(material) {
+        material.id = this.afs.createId();
+        return this.materialCollection.doc(material.id).set(material);
+    }
+    listarMaterial() {
+        return this.materialCollection.valueChanges();
+    }
+};
+MateriaisService.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
+];
+MateriaisService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"]])
+], MateriaisService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/splash/splash.component.scss":
+/*!**********************************************!*\
+  !*** ./src/app/splash/splash.component.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "ion-content {\n  --ion-background-color:#ffffff;\n}\n\n.centro {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translateX(-50%) translateY(-50%);\n          transform: translateX(-50%) translateY(-50%);\n  text-align: center;\n  padding: 10px;\n}\n\n.img {\n  max-width: 500px;\n  max-height: 250px;\n  width: auto;\n  height: auto;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.bottom {\n  position: absolute;\n  top: 90%;\n  left: 50%;\n  margin-bottom: 0;\n  -webkit-transform: translateX(-50%) translateY(-50%);\n          transform: translateX(-50%) translateY(-50%);\n  text-align: center;\n  padding: 10px;\n}\n\n.text-custom {\n  font-family: \"custom\";\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsdW5vL0Rvd25sb2Fkcy9DRUlGL3NyYy9hcHAvc3BsYXNoL3NwbGFzaC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvc3BsYXNoL3NwbGFzaC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNJLDhCQUFBO0FDQUo7O0FESUE7RUFDSyxrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBQ0Esb0RBQUE7VUFBQSw0Q0FBQTtFQUNBLGtCQUFBO0VBQ0EsYUFBQTtBQ0RMOztBRElBO0VBQ0ksZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7QUNESjs7QURJQTtFQUNJLGtCQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxnQkFBQTtFQUNBLG9EQUFBO1VBQUEsNENBQUE7RUFDQSxrQkFBQTtFQUNBLGFBQUE7QUNESjs7QURJQTtFQUNJLHFCQUFBO0FDREoiLCJmaWxlIjoic3JjL2FwcC9zcGxhc2gvc3BsYXNoLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG5pb24tY29udGVudHtcbiAgICAtLWlvbi1iYWNrZ3JvdW5kLWNvbG9yOiNmZmZmZmY7XG59XG5cbi8vNzdGRkZGXG4uY2VudHJve1xuICAgICBwb3NpdGlvbjogYWJzb2x1dGU7O1xuICAgICB0b3A6IDUwJTtcbiAgICAgbGVmdDogNTAlO1xuICAgICB0cmFuc2Zvcm0gOiB0cmFuc2xhdGVYKC01MCUpIHRyYW5zbGF0ZVkoLTUwJSk7XG4gICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgcGFkZGluZzogMTBweDtcbn1cblxuLmltZyB7XG4gICAgbWF4LXdpZHRoOjUwMHB4O1xuICAgIG1heC1oZWlnaHQ6MjUwcHg7XG4gICAgd2lkdGg6IGF1dG87XG4gICAgaGVpZ2h0OiBhdXRvO1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICAgIG1hcmdpbi1yaWdodDogYXV0bztcbn1cblxuLmJvdHRvbXtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7O1xuICAgIHRvcDogOTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICBtYXJnaW4tYm90dG9tOiAwOyBcbiAgICB0cmFuc2Zvcm0gOiB0cmFuc2xhdGVYKC01MCUpIHRyYW5zbGF0ZVkoLTUwJSk7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIHBhZGRpbmc6IDEwcHg7XG59XG5cbi50ZXh0LWN1c3RvbXsgXG4gICAgZm9udC1mYW1pbHk6IFwiY3VzdG9tXCI7IFxufSIsImlvbi1jb250ZW50IHtcbiAgLS1pb24tYmFja2dyb3VuZC1jb2xvcjojZmZmZmZmO1xufVxuXG4uY2VudHJvIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDUwJTtcbiAgbGVmdDogNTAlO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSkgdHJhbnNsYXRlWSgtNTAlKTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwYWRkaW5nOiAxMHB4O1xufVxuXG4uaW1nIHtcbiAgbWF4LXdpZHRoOiA1MDBweDtcbiAgbWF4LWhlaWdodDogMjUwcHg7XG4gIHdpZHRoOiBhdXRvO1xuICBoZWlnaHQ6IGF1dG87XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBtYXJnaW4tbGVmdDogYXV0bztcbiAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xufVxuXG4uYm90dG9tIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDkwJTtcbiAgbGVmdDogNTAlO1xuICBtYXJnaW4tYm90dG9tOiAwO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSkgdHJhbnNsYXRlWSgtNTAlKTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwYWRkaW5nOiAxMHB4O1xufVxuXG4udGV4dC1jdXN0b20ge1xuICBmb250LWZhbWlseTogXCJjdXN0b21cIjtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/splash/splash.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/splash/splash.component.ts ***!
+  \********************************************/
+/*! exports provided: SplashComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SplashComponent", function() { return SplashComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+let SplashComponent = class SplashComponent {
+    constructor(router) {
+        this.router = router;
+    }
+    ngOnInit() {
+        setTimeout(() => {
+            this.router.navigate(['/login']);
+        }, 4500);
+    }
+};
+SplashComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
+SplashComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-splash',
+        template: __webpack_require__(/*! raw-loader!./splash.component.html */ "./node_modules/raw-loader/index.js!./src/app/splash/splash.component.html"),
+        styles: [__webpack_require__(/*! ./splash.component.scss */ "./src/app/splash/splash.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+], SplashComponent);
 
 
 
@@ -1056,7 +1555,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/aluno/Documentos/CEIF/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/aluno/Downloads/CEIF/src/main.ts */"./src/main.ts");
 
 
 /***/ })

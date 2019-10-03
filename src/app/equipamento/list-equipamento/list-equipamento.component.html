@@ -1,3 +1,51 @@
-<p>
-  list-equipamento works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Materiais</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar></ion-searchbar>
+  <ion-list>
+    <ion-card *ngFor="let material of materiais$| async">
+      <ion-card-header>
+        <ion-card-subtitle>{{material.categoria}}</ion-card-subtitle>
+        <ion-card-title>{{material.descricao}}</ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <div style="text-align:center">
+          <h2 style="color:blue">Quantidade: {{material.quantidade}}</h2>
+          <h3 style="color:green">Disponível: {{material.disponivel}}</h3>
+        </div>
+      </ion-card-content>
+      <ion-button (click)="qrcode()">Alterar</ion-button>
+    </ion-card>
+  </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let material of materiais$| async">
+      <ion-avatar slot="start">
+        <img width="30px" height="30px"
+          src="https://blog.certisign.com.br/wp-content/uploads/2018/10/certo.png?cod_rev=38788">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{material.categoria}}</h2>
+        <h2><strong>{{material.descricao}}</strong></h2>
+        <h3>Quantidade: {{material.quantidade}}</h3>
+        <h3>Disponível: {{material.disponivel}}</h3>
+        <ion-button (click)="qrcode()">Alterar</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="success" routerLink="/addEquipamento">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

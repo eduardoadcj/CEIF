@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Material } from 'src/app/models/material';
+import { MateriaisService } from 'src/app/service/materiais.service';
 
 @Component({
   selector: 'app-list-equipamento',
@@ -7,8 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListEquipamentoComponent implements OnInit {
 
-  constructor() { }
+  materiais$: Observable<Material[]>;
 
-  ngOnInit() {}
+  constructor(private materiaisService: MateriaisService) { }
+
+  ngOnInit() {
+    this.materiais$ = this.materiaisService.listarMaterial();
+  }
 
 }

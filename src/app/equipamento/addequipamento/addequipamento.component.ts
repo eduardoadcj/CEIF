@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class AddequipamentoComponent implements OnInit {
 
-  categoria: Categoria = new Categoria();
+
 
   equipamentoForm = this.fb.group({
     id: [undefined],
@@ -40,10 +40,11 @@ export class AddequipamentoComponent implements OnInit {
   ngOnInit() {
     this.categorias$ = this.categoriaService.listarCategoria();
 
+
   }
   addMaterial() {
     if (this.equipamentoForm.value.idCategoria == null || this.equipamentoForm.value.idCategoria == '') {
-      this.presentErrorCategoria();
+      this.presentErroMaterialCadastrado();
     } else {
       this.categoriaService.buscarPorId(this.equipamentoForm.value.idCategoria, (nome: string) => {
         let material: Material = {
@@ -55,9 +56,11 @@ export class AddequipamentoComponent implements OnInit {
           quantidade: this.equipamentoForm.value.disponivel
         }
         this.materiaisService.adicionarMaterial(material);
+        this.equipamentoForm.reset();
       });
-      this.equipamentoForm.reset();
-      this.router.navigate(['/'])
+      this.router.navigate(['/equipamento']);
+      this.presentMaterialCadastrado();
+      
     }
 
   }
@@ -66,6 +69,25 @@ export class AddequipamentoComponent implements OnInit {
     const alert = await this.alertController.create({
       header: 'Sucesso',
       message: '<strong>Por favor selecione uma categoria!!</strong>',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async presentMaterialCadastrado() {
+    const alert = await this.alertController.create({
+      header: 'Sucesso',
+      message: 'Material cadastrada!!',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+  async presentErroMaterialCadastrado() {
+    const alert = await this.alertController.create({
+      header: 'Sucesso',
+      message: 'Erro ao cadastrar material!!',
       buttons: ['OK']
     });
 

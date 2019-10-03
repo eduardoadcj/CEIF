@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { Material } from '../models/material';
 import { take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -18,6 +19,10 @@ export class MateriaisService {
   adicionarMaterial(material: Material) {
     material.id = this.afs.createId();
     return this.materialCollection.doc(material.id).set(material);
+  }
+
+  listarMaterial(): Observable<Material[]> {
+    return this.materialCollection.valueChanges();
   }
 
   
