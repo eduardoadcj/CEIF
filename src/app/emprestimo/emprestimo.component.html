@@ -1,0 +1,45 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="login"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Novo Material</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+    <form>
+      <ion-item>
+        <div class="controls">
+          <ion-label class="inputCustom" position="floating">Descricao do Material<ion-text style="color:red">*
+            </ion-text>
+          </ion-label>
+          <ion-input type="text"></ion-input>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Categoria</ion-label>
+        <ion-select placeholder="Escolha">
+          <ion-select-option>
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <div class="controls">
+          <ion-label class="inputCustom" position="floating">Quantidade<ion-text style="color:red">*
+            </ion-text>
+          </ion-label>
+          <ion-input type="text"></ion-input>
+        </div>
+      </ion-item>
+      <button class="mt btn centro-btn" style="background-color:#4aba70;margin-top:5% " expand="full"
+      color="secondary" >
+        Salvar
+      </button>
+      <br>
+    </form>
+
+
+  </ion-content>
+</ion-app>

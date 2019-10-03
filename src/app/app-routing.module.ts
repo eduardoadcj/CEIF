@@ -8,6 +8,7 @@ import { SplashComponent } from './splash/splash.component';
 import { AddcategoriaComponent } from './equipamento/addcategoria/addcategoria.component';
 import { AddequipamentoComponent } from './equipamento/addequipamento/addequipamento.component';
 import { ListEquipamentoComponent } from './equipamento/list-equipamento/list-equipamento.component';
+import { EmprestimoComponent } from './emprestimo/emprestimo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'splash', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'addcategoria', component: AddcategoriaComponent},
   { path: 'addEquipamento', component: AddequipamentoComponent},
   { path: 'equipamento', component: ListEquipamentoComponent},
+  { path: 'emprestimo', component: EmprestimoComponent},
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   { path: 'list-categoria', loadChildren: './equipamento/list-categoria/list-categoria.module#ListCategoriaPageModule' },
   { path: 'categoria', component: ListCategoriaPage},

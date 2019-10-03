@@ -76,15 +76,13 @@
       </ion-card>
       <!-- LISTA -->
 
-      <div class="ion-padding">
-        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-          <ion-fab-button color="success">
-            <ion-icon name="add"></ion-icon>
-          </ion-fab-button>
-        </ion-fab>
-      </div>
     </ion-list>
   </div>
+      <ion-fab *ngIf="!tipo" horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="success" routerLink="/emprestimo">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
   <!-- FIM USUAIO -->
 </ion-content>
 
