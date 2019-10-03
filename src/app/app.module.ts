@@ -25,11 +25,12 @@ import { RecuperarSenhaComponent } from './auth/recuperar-senha/recuperar-senha.
 import { SplashComponent } from './splash/splash.component';
 import { AddcategoriaComponent } from './equipamento/addcategoria/addcategoria.component';
 import { AddequipamentoComponent } from './equipamento/addequipamento/addequipamento.component';
+import { ListEquipamentoComponent } from './equipamento/list-equipamento/list-equipamento.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent,ListCategoriaPage, RecuperarSenhaComponent,SplashComponent,AddcategoriaComponent, AddequipamentoComponent],
+  declarations: [AppComponent,LoginComponent,ListCategoriaPage, RecuperarSenhaComponent,SplashComponent,AddcategoriaComponent, AddequipamentoComponent, ListEquipamentoComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 
