@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Categoria } from '../models/categoria';
 import { CategoriasService } from '../service/categorias.service';
+import { ItensLocacao } from '../models/itens-locacao';
 
 
 @Component({
@@ -28,10 +29,13 @@ export class EmprestimoComponent implements OnInit {
   material: Material = new Material();
   categoria: Categoria = new Categoria();
 
+  listaItensLocacao = new Array<ItensLocacao>();
+
   emprestimoForm = this.fb.group({
     id: [undefined],
     categoria:[''],
     material:[''],
+    quantidade:[1],
   });
 
   constructor(private materiaisService: MateriaisService, private fb: FormBuilder,private categoriasService: CategoriasService) {
@@ -57,14 +61,18 @@ export class EmprestimoComponent implements OnInit {
     this.categoria = event.value;
     // console.log(event.value.id);
     this.materiais$ = this.materiaisService.buscarMateriaCategoria(event.value.id);
-    this.materiais$.subscribe(material => {
-      this.listaMaterial = material;
+    this.materiais$.subscribe(categoria => {
+      this.listaMaterial = categoria;
     });
   }
 
-
   addMaterial(){
-    console.log(this.material.id)
+    const itemLocacao : ItensLocacao={
+      material: this.material,
+      quantidade: this.emprestimoForm.value.quantidade
+    }
+    console.log(itemLocacao)
+    this.listaItensLocacao.push(itemLocacao);
   }
 
   ngOnInit() { }

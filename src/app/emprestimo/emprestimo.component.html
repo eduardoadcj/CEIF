@@ -25,13 +25,20 @@
         itemTextField="descricao" [canSearch]="true" (onChange)="materialChange($event)" #portComponent>
       </ionic-selectable>
     </ion-item>
+    <ion-item>
+      <div class="controls">
+        <ion-label class="inputCustom" position="floating">Quantidade<ion-text style="color:red">*
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" formControlName='quantidade'></ion-input>
+      </div>
+    </ion-item>
       <button class="mt btn centro-btn" style="background-color:#4aba70;margin-top:5% " expand="full"
       color="secondary" (click)="addMaterial()" >
         Salvar
       </button>
       <br>
     </form>
-
 
   </ion-content>
 </ion-app>
