@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { IonicSelectableComponent } from 'ionic-selectable';
+import { MateriaisService } from '../service/materiais.service';
+import { Observable } from 'rxjs';
+import { Material } from '../models/material';
+import { materialize } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-emprestimo',
@@ -7,8 +14,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmprestimoComponent implements OnInit {
 
-  constructor() { }
+  materiais$: Observable<Material[]>
 
-  ngOnInit() {}
+  listaMaterial: Material[];
 
+  material: Material = new Material();
+
+  constructor(private materiaisService: MateriaisService) {
+    this.materiais$ = this.materiaisService.listarMaterial();
+
+    this.materiais$.subscribe(material => {
+      this.listaMaterial = material;
+    });    
+  }
+
+  portChange(event: {
+    component: IonicSelectableComponent,
+    value: any
+  }) {
+    console.log('port:', event.value);
+  }
+
+  ngOnInit() { }
 }

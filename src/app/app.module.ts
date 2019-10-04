@@ -28,6 +28,8 @@ import { AddequipamentoComponent } from './equipamento/addequipamento/addequipam
 import { ListEquipamentoComponent } from './equipamento/list-equipamento/list-equipamento.component';
 import { EmprestimoComponent } from './emprestimo/emprestimo.component';
 
+import { IonicSelectableModule } from 'ionic-selectable';
+
 
 
 @NgModule({
@@ -52,6 +54,7 @@ import { EmprestimoComponent } from './emprestimo/emprestimo.component';
     FormsModule,
     ReactiveFormsModule,
     AngularFirestoreModule,
+    IonicSelectableModule,
   ],
   providers: [
     StatusBar,
