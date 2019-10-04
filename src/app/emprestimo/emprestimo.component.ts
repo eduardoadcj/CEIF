@@ -9,6 +9,13 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Categoria } from '../models/categoria';
 import { CategoriasService } from '../service/categorias.service';
 import { ItensLocacao } from '../models/itens-locacao';
+import { ItensLocacaoService } from '../service/itens-locacao.service';
+import { LocacaoService } from '../service/locacao.service';
+import { Locacao } from '../models/locacao';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+
 
 
 @Component({
@@ -31,19 +38,38 @@ export class EmprestimoComponent implements OnInit {
 
   listaItensLocacao = new Array<ItensLocacao>();
 
-  emprestimoForm = this.fb.group({
+  
+
+  uidUser: string;
+
+  itenLocacaoForm = this.fb.group({
     id: [undefined],
-    categoria:[''],
-    material:[''],
-    quantidade:[1],
+    categoria:['',[Validators.required]],
+    material:['',[Validators.required]],
+    quantidade:[1,[Validators.required]],
   });
 
-  constructor(private materiaisService: MateriaisService, private fb: FormBuilder,private categoriasService: CategoriasService) {
+  constructor(
+    private materiaisService: MateriaisService,
+    private locacaoService: LocacaoService, 
+    private fb: FormBuilder,
+    private categoriasService: CategoriasService,
+    private auth: AngularFireAuth,
+    private router: Router,
+    public alertController: AlertController,
+    ) {
     // this.materiais$ = this.materiaisService.listarMaterial();
     this.categorias$ = this.categoriasService.listarCategoria();    
     this.categorias$.subscribe(categoria =>{
       this.listaCategoria = categoria;
-    })    
+    })
+    this.getUserUid();    
+  }
+
+  getUserUid(){
+    this.auth.authState.subscribe((usuario) => {
+      this.uidUser = usuario.uid;
+    });
   }
 
   materialChange(event: {
@@ -69,11 +95,42 @@ export class EmprestimoComponent implements OnInit {
   addMaterial(){
     const itemLocacao : ItensLocacao={
       material: this.material,
-      quantidade: this.emprestimoForm.value.quantidade
+      quantidade: this.itenLocacaoForm.value.quantidade
     }
     console.log(itemLocacao)
     this.listaItensLocacao.push(itemLocacao);
+    this.itenLocacaoForm.reset();
   }
+  deletar(i){
+    this.listaItensLocacao.splice(i)
+  }
+  cadastrarEmprestimo(){
+    let date: Date = new Date("2019-01-01");
 
+    let locacao : Locacao ={
+      id: '0',
+      dataDevolucao: date,
+      dataLocacao: date,
+      itensLocacao: this.listaItensLocacao,
+      lid: '0',
+      uid: this.uidUser,
+    }
+    this.locacaoService.adicionarLocacao(locacao);
+    this.listaItensLocacao = [];
+    this.router.navigate(['/home']);
+    this.presentEmprestimoSuccess();
+  }
   ngOnInit() { }
+
+
+  async presentEmprestimoSuccess() {
+    const alert = await this.alertController.create({
+      header: 'Sucesso',
+      message: 'Emprestimo solicidado com sucesso',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }
+

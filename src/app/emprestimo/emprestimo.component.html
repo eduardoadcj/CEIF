@@ -9,7 +9,7 @@
   </ion-header>
 
   <ion-content padding>
-    <form [formGroup]="emprestimoForm">
+    <form [formGroup]="itenLocacaoForm">
       <ion-item>
         <ion-label>Categoria<ion-text style="color:red">*
           </ion-text>
@@ -34,11 +34,29 @@
       </div>
     </ion-item>
       <button class="mt btn centro-btn" style="background-color:#4aba70;margin-top:5% " expand="full"
-      color="secondary" (click)="addMaterial()" >
+      color="secondary" [disabled]="!itenLocacaoForm.valid" (click)="addMaterial()" >
         Salvar
       </button>
       <br>
     </form>
+    <hr style="border-top:solid 1px; border-color: grey;">
+    <ion-item *ngFor="let itens of listaItensLocacao; let i = index">
+      <ion-avatar slot="start">
+        <img width="30px" height="30px"
+          src="https://blog.certisign.com.br/wp-content/uploads/2018/10/certo.png?cod_rev=38788">
+      </ion-avatar>
+      <ion-label>
+        <h2>Material: <strong>{{itens.material.descricao}}</strong></h2>
+        <h3>Quantidade: <strong>{{itens.quantidade}}</strong></h3>
+        <ion-button color="danger" (click)="deletar(i)"><ion-icon name="trash"></ion-icon></ion-button>
+      </ion-label>
+    </ion-item>
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+      <ion-fab-button color="success" (click)="cadastrarEmprestimo()">
+        <ion-icon name="checkmark"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+   
 
   </ion-content>
 </ion-app>

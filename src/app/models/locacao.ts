@@ -1,6 +1,10 @@
+import { ItensLocacao } from './itens-locacao';
+
 export class Locacao {
     id?:string;
-    lid: number;
+    lid: string;
+    uid: string;
     dataLocacao: Date;
     dataDevolucao: Date;
+    itensLocacao: Array<ItensLocacao>;
 }

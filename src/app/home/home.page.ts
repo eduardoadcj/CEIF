@@ -1,23 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuController, AlertController } from '@ionic/angular';
+import { LocacaoService } from '../service/locacao.service';
+import { Observable } from 'rxjs';
+import { Locacao } from '../models/locacao';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+
+  locacao$: Observable<Locacao[]>;
 
   tipoUsuario: string = 'aluno';
   tipo: boolean = true;
 
-  constructor(private menuController: MenuController, private alertController: AlertController) {
+  constructor(private menuController: MenuController, private alertController: AlertController, private locacaoService: LocacaoService) {
     if (this.tipoUsuario === "aluno") {
       this.tipo = false;
     } else {
       this.tipo = true;
     }
 
+  }
+
+  ngOnInit() {
+  this.locacaoService.buscarLocacao((local$:Observable<Locacao[]>)=>{
+    this.locacao$ = local$;
+    console.log(local$)
+   });
   }
 
   openFirst() {

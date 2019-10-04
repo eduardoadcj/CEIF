@@ -29,60 +29,32 @@
       </ion-item>
     </ion-list> -->
     <ion-list>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Instrumentos</ion-card-subtitle>
-          <ion-card-title>Violão</ion-card-title>
-        </ion-card-header>
+      <ion-item *ngFor="let locacao of locacao$| async">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{locacao}}</ion-card-subtitle>
+            <ion-card-title>Guitarra</ion-card-title>
+          </ion-card-header>
 
-        <ion-card-content>
-          <div style="text-align:center">
-            <h2 style="color:blue">Emprestado</h2>
-            <h3>Edmar</h3>
-            <h2>27/09/2019 - 22:00</h2>
-          </div>
-        </ion-card-content>
-        <ion-button (click)="qrcode()">show code</ion-button>
-      </ion-card>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Instrumentos</ion-card-subtitle>
-          <ion-card-title>Violão</ion-card-title>
-        </ion-card-header>
-
-        <ion-card-content>
-          <div style="text-align:center">
-            <h2 style="color:green">Devolvido</h2>
-            <h3>Edmar</h3>
-            <h2>27/09/2019 - 22:00</h2>
-          </div>
-        </ion-card-content>
-        <ion-button (click)="qrcode()">show code</ion-button>
-      </ion-card>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Instrumentos</ion-card-subtitle>
-          <ion-card-title>Guitarra</ion-card-title>
-        </ion-card-header>
-
-        <ion-card-content>
-          <div style="text-align:center">
-            <h2 style="color:green">Devolvido</h2>
-            <h3>Edgar</h3>
-            <h2>27/09/2019 - 22:00</h2>
-          </div>
-        </ion-card-content>
-        <ion-button (click)="qrcode()">show code</ion-button>
-      </ion-card>
+          <ion-card-content>
+            <div style="text-align:center">
+              <h2 style="color:green">Devolvido</h2>
+              <h3>Edgar</h3>
+              <h2>27/09/2019 - 22:00</h2>
+            </div>
+          </ion-card-content>
+          <ion-button (click)="qrcode()">show code</ion-button>
+        </ion-card>
+      </ion-item>
       <!-- LISTA -->
 
     </ion-list>
   </div>
-      <ion-fab *ngIf="!tipo" horizontal="end" vertical="bottom" slot="fixed">
-        <ion-fab-button color="success" routerLink="/emprestimo">
-          <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
+  <ion-fab *ngIf="!tipo" horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="success" routerLink="/emprestimo">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <!-- FIM USUAIO -->
 </ion-content>
 
