@@ -12,7 +12,7 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent {
 
-  tipoUsuario: string = 'aluno';
+  tipoUsuario: string = 'usuario';
   tipo: boolean = true;
 
   constructor(

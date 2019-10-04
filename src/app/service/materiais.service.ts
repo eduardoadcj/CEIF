@@ -28,6 +28,9 @@ export class MateriaisService {
     let materialDoc = this.afs.doc<Material>('material');
     return materialDoc.valueChanges();
   }
+  buscarMateriaCategoria(key): Observable<Material[]>{
+    return this.afs.collection<Material>('material', ref => ref.where('categoria.id','==',key)).valueChanges();
+  }
 
   
 }

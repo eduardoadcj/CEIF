@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { MateriaisService } from '../service/materiais.service';
 import { Observable } from 'rxjs';
 import { Material } from '../models/material';
 import { materialize } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Categoria } from '../models/categoria';
+import { CategoriasService } from '../service/categorias.service';
 
 
 @Component({
@@ -14,25 +17,54 @@ import { map } from 'rxjs/operators';
 })
 export class EmprestimoComponent implements OnInit {
 
+  @ViewChild('portComponent', { static: false }) portComponent: IonicSelectableComponent;
+
   materiais$: Observable<Material[]>
+  categorias$: Observable<Categoria[]>
 
   listaMaterial: Material[];
+  listaCategoria: Categoria[];
 
   material: Material = new Material();
+  categoria: Categoria = new Categoria();
 
-  constructor(private materiaisService: MateriaisService) {
-    this.materiais$ = this.materiaisService.listarMaterial();
+  emprestimoForm = this.fb.group({
+    id: [undefined],
+    categoria:[''],
+    material:[''],
+  });
 
-    this.materiais$.subscribe(material => {
-      this.listaMaterial = material;
-    });    
+  constructor(private materiaisService: MateriaisService, private fb: FormBuilder,private categoriasService: CategoriasService) {
+    // this.materiais$ = this.materiaisService.listarMaterial();
+    this.categorias$ = this.categoriasService.listarCategoria();    
+    this.categorias$.subscribe(categoria =>{
+      this.listaCategoria = categoria;
+    })    
   }
 
-  portChange(event: {
+  materialChange(event: {
     component: IonicSelectableComponent,
-    value: any
+    value: any,
   }) {
-    console.log('port:', event.value);
+    this.material = event.value;
+    
+  }
+  categoriaChange(event: {
+    component: IonicSelectableComponent,
+    value: any,
+  }) {
+    this.portComponent.clear();
+    this.categoria = event.value;
+    // console.log(event.value.id);
+    this.materiais$ = this.materiaisService.buscarMateriaCategoria(event.value.id);
+    this.materiais$.subscribe(material => {
+      this.listaMaterial = material;
+    });
+  }
+
+
+  addMaterial(){
+    console.log(this.material.id)
   }
 
   ngOnInit() { }
