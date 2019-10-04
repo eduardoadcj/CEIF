@@ -1,0 +1,44 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="login"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Emprestimo</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+    <form [formGroup]="emprestimoForm">
+      <ion-item>
+        <ion-label>Categoria<ion-text style="color:red">*
+          </ion-text>
+        </ion-label>
+        <ionic-selectable formControlName="categoria" [items]="listaCategoria" itemValueField="id" itemTextField="nome"
+          [canSearch]="true" (onChange)="categoriaChange($event)">
+        </ionic-selectable>
+      </ion-item>
+    <ion-item>
+      <ion-label>Material<ion-text style="color:red">*
+      </ion-text></ion-label>
+      <ionic-selectable formControlName="material" [items]="listaMaterial" itemValueField="id"
+        itemTextField="descricao" [canSearch]="true" (onChange)="materialChange($event)" #portComponent>
+      </ionic-selectable>
+    </ion-item>
+    <ion-item>
+      <div class="controls">
+        <ion-label class="inputCustom" position="floating">Quantidade<ion-text style="color:red">*
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" formControlName='quantidade'></ion-input>
+      </div>
+    </ion-item>
+      <button class="mt btn centro-btn" style="background-color:#4aba70;margin-top:5% " expand="full"
+      color="secondary" (click)="addMaterial()" >
+        Salvar
+      </button>
+      <br>
+    </form>
+
+  </ion-content>
+</ion-app>

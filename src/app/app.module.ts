@@ -26,11 +26,24 @@ import { SplashComponent } from './splash/splash.component';
 import { AddcategoriaComponent } from './equipamento/addcategoria/addcategoria.component';
 import { AddequipamentoComponent } from './equipamento/addequipamento/addequipamento.component';
 import { ListEquipamentoComponent } from './equipamento/list-equipamento/list-equipamento.component';
+import { EmprestimoComponent } from './emprestimo/emprestimo.component';
+
+import { IonicSelectableModule } from 'ionic-selectable';
 
 
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent,ListCategoriaPage, RecuperarSenhaComponent,SplashComponent,AddcategoriaComponent, AddequipamentoComponent, ListEquipamentoComponent],
+  declarations: [
+    AppComponent, 
+    LoginComponent,
+    ListCategoriaPage, 
+    RecuperarSenhaComponent,
+    SplashComponent,
+    AddcategoriaComponent, 
+    AddequipamentoComponent, 
+    ListEquipamentoComponent,
+    EmprestimoComponent,
+  ],
   entryComponents: [],
   imports: [
     BrowserModule, 
@@ -41,6 +54,7 @@ import { ListEquipamentoComponent } from './equipamento/list-equipamento/list-eq
     FormsModule,
     ReactiveFormsModule,
     AngularFirestoreModule,
+    IonicSelectableModule,
   ],
   providers: [
     StatusBar,

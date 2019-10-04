@@ -12,7 +12,7 @@ export class MateriaisService {
 
   private materialCollection: AngularFirestoreCollection<Material> = this.afs.collection('material');
 
- 
+  material: Material[];
 
   constructor(private afs: AngularFirestore) { }
 
@@ -23,6 +23,13 @@ export class MateriaisService {
 
   listarMaterial(): Observable<Material[]> {
     return this.materialCollection.valueChanges();
+  }
+  buscarLista() {
+    let materialDoc = this.afs.doc<Material>('material');
+    return materialDoc.valueChanges();
+  }
+  buscarMateriaCategoria(key): Observable<Material[]>{
+    return this.afs.collection<Material>('material', ref => ref.where('categoria.id','==',key)).valueChanges();
   }
 
   

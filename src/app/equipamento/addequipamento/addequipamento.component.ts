@@ -47,13 +47,17 @@ export class AddequipamentoComponent implements OnInit {
       this.presentErroMaterialCadastrado();
     } else {
       this.categoriaService.buscarPorId(this.equipamentoForm.value.idCategoria, (nome: string) => {
+        let categoria: Categoria={
+          id: this.equipamentoForm.value.idCategoria,
+          nome: nome,
+        }
         let material: Material = {
           id: this.equipamentoForm.value.id,
           descricao: this.equipamentoForm.value.descricao,
-          categoria: nome,
-          idCategoria: this.equipamentoForm.value.idCategoria,
+          categoria: categoria,
           disponivel: this.equipamentoForm.value.disponivel,
-          quantidade: this.equipamentoForm.value.disponivel
+          quantidade: this.equipamentoForm.value.disponivel,
+          status: 'Disponível',
         }
         this.materiaisService.adicionarMaterial(material);
         this.equipamentoForm.reset();
@@ -78,7 +82,7 @@ export class AddequipamentoComponent implements OnInit {
   async presentMaterialCadastrado() {
     const alert = await this.alertController.create({
       header: 'Sucesso',
-      message: 'Material cadastrada!!',
+      message: 'Material cadastrado!!',
       buttons: ['OK']
     });
 
