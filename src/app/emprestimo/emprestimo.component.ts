@@ -97,15 +97,18 @@ export class EmprestimoComponent implements OnInit {
       material: this.material,
       quantidade: this.itenLocacaoForm.value.quantidade
     }
-    console.log(itemLocacao)
-    this.listaItensLocacao.push(itemLocacao);
-    this.itenLocacaoForm.reset();
+    if(itemLocacao.quantidade <= this.material.disponivel){
+      this.listaItensLocacao.push(itemLocacao);
+      this.itenLocacaoForm.reset();
+    }else{
+      this.presentErroItemIndisponível();      
+    }
+    
   }
   deletar(i){
-    this.listaItensLocacao.splice(i)
+    this.listaItensLocacao.splice(i,1);
   }
   cadastrarEmprestimo(){
-    console.log(this.listaItensLocacao.length);
     if(this.listaItensLocacao.length == 0){
       this.presentErroEmprestimo();   
     }else{
@@ -142,6 +145,15 @@ export class EmprestimoComponent implements OnInit {
     const alert = await this.alertController.create({
       header: 'Erro ao solicitar emprestimo',
       message: 'Por favor adicione algum item para emprestimo',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+  async presentErroItemIndisponível() {
+    const alert = await this.alertController.create({
+      header: 'Erro ao adicionar item',
+      message: 'O item selecionado não está disponível',
       buttons: ['OK']
     });
 
