@@ -28,7 +28,6 @@ export class HomePage implements OnInit {
   ngOnInit() {
   this.locacaoService.buscarLocacao((local$:Observable<Locacao[]>)=>{
     this.locacao$ = local$;
-    console.log(local$)
    });
   }
 

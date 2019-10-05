@@ -28,27 +28,22 @@
         </ion-label>
       </ion-item>
     </ion-list> -->
-    <ion-list>
-      <ion-item *ngFor="let locacao of locacao$| async">
-        <ion-card>
+        <ion-card *ngFor="let locacaoFora of locacao$| async;let i = index;" style="width:80%;margin-left:10%;text-align: center">
           <ion-card-header>
-            <ion-card-subtitle>{{locacao}}</ion-card-subtitle>
-            <ion-card-title>Guitarra</ion-card-title>
+            <ion-card-title style="text-align: center">{{ locacaoFora.dataLocacao.seconds * 1000 | date:'dd/MM/yyyy' }}</ion-card-title>
+            <hr style="border-top:solid 1px; border-color: grey"  >
+            <ion-card-subtitle style="text-align: center"><strong>Itens Emprestimo</strong></ion-card-subtitle>
+            <ion-card-subtitle *ngFor="let locacao of locacaoFora.itensLocacao">{{locacao.material.descricao}} x{{locacao.quantidade}}</ion-card-subtitle>
           </ion-card-header>
-
           <ion-card-content>
             <div style="text-align:center">
-              <h2 style="color:green">Devolvido</h2>
-              <h3>Edgar</h3>
-              <h2>27/09/2019 - 22:00</h2>
+              <h2 style="color:green">Emprestado</h2>
+              <h3>Edmar</h3>
             </div>
           </ion-card-content>
-          <ion-button (click)="qrcode()">show code</ion-button>
+          <ion-button (click)="qrcode()" style="padding-bottom:1%">QR Code</ion-button>
         </ion-card>
-      </ion-item>
       <!-- LISTA -->
-
-    </ion-list>
   </div>
   <ion-fab *ngIf="!tipo" horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button color="success" routerLink="/emprestimo">

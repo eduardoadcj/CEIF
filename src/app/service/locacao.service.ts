@@ -26,7 +26,7 @@ export class LocacaoService {
 
   buscarLocacao(onComplete){
     this.getUserUid((userUid:string)=>{
-      onComplete (this.afs.collection<Locacao>('Locacao', ref => ref.where('uid','==',userUid)).valueChanges());
+      onComplete (this.afs.collection<Locacao>('locacao', ref => ref.where('uid','==',userUid)).valueChanges());
       console.log(userUid);
     }); 
     

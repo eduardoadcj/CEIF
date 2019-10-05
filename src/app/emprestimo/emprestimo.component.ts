@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { MateriaisService } from '../service/materiais.service';
-import { Observable } from 'rxjs';
+import { Observable, empty } from 'rxjs';
 import { Material } from '../models/material';
 import { materialize } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
@@ -105,28 +105,43 @@ export class EmprestimoComponent implements OnInit {
     this.listaItensLocacao.splice(i)
   }
   cadastrarEmprestimo(){
-    let date: Date = new Date("2019-01-01");
+    console.log(this.listaItensLocacao.length);
+    if(this.listaItensLocacao.length == 0){
+      this.presentErroEmprestimo();   
+    }else{
+      let date: Date = new Date("2019-01-01");
 
-    let locacao : Locacao ={
-      id: '0',
-      dataDevolucao: date,
-      dataLocacao: date,
-      itensLocacao: this.listaItensLocacao,
-      lid: '0',
-      uid: this.uidUser,
+      let locacao : Locacao ={
+        id: '0',
+        dataDevolucao: date,
+        dataLocacao: date,
+        itensLocacao: this.listaItensLocacao,
+        lid: '0',
+        uid: this.uidUser,
+      }
+      this.locacaoService.adicionarLocacao(locacao);
+      this.listaItensLocacao = [];
+      this.router.navigate(['/home']);
+      this.presentEmprestimoSuccess();
     }
-    this.locacaoService.adicionarLocacao(locacao);
-    this.listaItensLocacao = [];
-    this.router.navigate(['/home']);
-    this.presentEmprestimoSuccess();
+    
   }
   ngOnInit() { }
 
 
   async presentEmprestimoSuccess() {
     const alert = await this.alertController.create({
-      header: 'Sucesso',
+      header: 'Emprestimo',
       message: 'Emprestimo solicidado com sucesso',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+  async presentErroEmprestimo() {
+    const alert = await this.alertController.create({
+      header: 'Erro ao solicitar emprestimo',
+      message: 'Por favor adicione algum item para emprestimo',
       buttons: ['OK']
     });
 
