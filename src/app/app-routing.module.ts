@@ -9,19 +9,21 @@ import { AddcategoriaComponent } from './equipamento/addcategoria/addcategoria.c
 import { AddequipamentoComponent } from './equipamento/addequipamento/addequipamento.component';
 import { ListEquipamentoComponent } from './equipamento/list-equipamento/list-equipamento.component';
 import { EmprestimoComponent } from './emprestimo/emprestimo.component';
+import { CadastroUsuarioComponent } from './auth/cadastro-usuario/cadastro-usuario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'splash', pathMatch: 'full' },
-  { path: 'splash', component: SplashComponent},
-  { path: 'login', component:LoginComponent},
-  { path: 'recuperarSenha', component: RecuperarSenhaComponent},
-  { path: 'addcategoria', component: AddcategoriaComponent},
-  { path: 'addEquipamento', component: AddequipamentoComponent},
-  { path: 'equipamento', component: ListEquipamentoComponent},
-  { path: 'emprestimo', component: EmprestimoComponent},
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: 'splash', component: SplashComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'recuperarSenha', component: RecuperarSenhaComponent },
+  { path: 'addcategoria', component: AddcategoriaComponent },
+  { path: 'addEquipamento', component: AddequipamentoComponent },
+  { path: 'equipamento', component: ListEquipamentoComponent },
+  { path: 'emprestimo', component: EmprestimoComponent },
+  { path: 'cadastroUsuario', component: CadastroUsuarioComponent },
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
   { path: 'list-categoria', loadChildren: './equipamento/list-categoria/list-categoria.module#ListCategoriaPageModule' },
-  { path: 'categoria', component: ListCategoriaPage},
+  { path: 'categoria', component: ListCategoriaPage },
 ];
 
 @NgModule({

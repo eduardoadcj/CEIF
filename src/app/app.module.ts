@@ -27,27 +27,31 @@ import { AddcategoriaComponent } from './equipamento/addcategoria/addcategoria.c
 import { AddequipamentoComponent } from './equipamento/addequipamento/addequipamento.component';
 import { ListEquipamentoComponent } from './equipamento/list-equipamento/list-equipamento.component';
 import { EmprestimoComponent } from './emprestimo/emprestimo.component';
-
 import { IonicSelectableModule } from 'ionic-selectable';
+import { CadastroUsuarioComponent } from './auth/cadastro-usuario/cadastro-usuario.component';
+import { ValidadorCpf } from './util/validador.cpf';
+import { ValidarPessoaCronosService } from './service/validar.pessoa.cronos.service';
+import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     LoginComponent,
-    ListCategoriaPage, 
+    ListCategoriaPage,
     RecuperarSenhaComponent,
     SplashComponent,
-    AddcategoriaComponent, 
-    AddequipamentoComponent, 
+    AddcategoriaComponent,
+    AddequipamentoComponent,
     ListEquipamentoComponent,
     EmprestimoComponent,
+    CadastroUsuarioComponent,
   ],
   entryComponents: [],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
+    BrowserModule,
+    IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
@@ -55,8 +59,12 @@ import { IonicSelectableModule } from 'ionic-selectable';
     ReactiveFormsModule,
     AngularFirestoreModule,
     IonicSelectableModule,
+    HttpClientModule,
   ],
   providers: [
+    ValidadorCpf,
+    ValidarPessoaCronosService,
+    HttpClient,
     StatusBar,
     SplashScreen,
     RecuperarSenhaComponent,
@@ -65,4 +73,4 @@ import { IonicSelectableModule } from 'ionic-selectable';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

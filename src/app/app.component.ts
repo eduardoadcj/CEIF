@@ -4,6 +4,10 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './auth/auth.service';
+import { UsuariosService } from './service/usuarios.service';
+import { Observable } from 'rxjs';
+import { Usuario } from './models/usuario';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +18,22 @@ export class AppComponent {
 
   tipoUsuario: string = 'usuario';
   tipo: boolean = true;
+  nomeUsuario: string;
+  usuarioLogado$: Observable<Usuario>;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private auth: AuthService
+    private auth: AuthService,
+    private usuarioService: UsuariosService,
+    private afAuth: AngularFireAuth,
   ) {
+    this.afAuth.authState.subscribe((usuario) => {
+     this.usuarioService.buscarPorId(usuario.uid,((nome:string)=>{
+       this.nomeUsuario = nome;
+     }));
+    })   
     this.initializeApp();
     if(this.tipoUsuario === "aluno"){
       this.tipo = false;

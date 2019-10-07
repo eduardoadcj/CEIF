@@ -1,0 +1,59 @@
+<ion-app>
+  <ion-content padding>
+    <img class="img" width="" height="" style="margin-top: 10%; margin-bottom: 5%"
+      src="../../../assets/img/Logo Final.png">
+
+    <form [formGroup]="cadastroUsuarioForm">
+
+      <ion-item>
+        <div class="controls">
+          <ion-label class="inputCustom" position="floating">CPF<ion-text color="dark">*</ion-text>
+          </ion-label>
+          <ion-input type="text" formControlName='cpf' required></ion-input>
+        </div>
+      </ion-item>
+      <span style='color:gray; font-size: 10px;margin-left: 5%;'
+        *ngIf="cadastroUsuarioForm.controls.cpf.hasError('required')">
+        Por favor insira o seu cpf*
+      </span>
+      <span style='color:red; font-size:12px;margin-left: 5%;'
+        *ngIf="cadastroUsuarioForm.controls.cpf.hasError('validarCpfForm')">
+        Por favor insira um cpf válido
+      </span>
+      <ion-item>
+        <div class="controls">
+          <ion-label class="inputCustom" position="floating">E-mail<ion-text color="dark">*</ion-text>
+          </ion-label>
+          <ion-input type="text" formControlName='email' required #email></ion-input>
+        </div>
+      </ion-item>
+      <span style='color:gray; font-size: 10px;margin-left: 5%;'
+        *ngIf="cadastroUsuarioForm.controls.email.hasError('required')">
+        Por favor insira o seu e-mail*
+      </span>
+      <span style='color:red; font-size:12px;margin-left: 5%;'
+        *ngIf="cadastroUsuarioForm.controls.email.hasError('email')">
+        Por favor insira o seu e-mail corretamente
+      </span>
+
+      <ion-item>
+        <ion-label position="floating">Senha : <ion-text color="dark">*</ion-text>
+        </ion-label>
+        <ion-input required name="mail" type="password" formControlName='senha'></ion-input>
+      </ion-item>
+      <span style='color:gray; font-size: 10px;margin-left: 5%'
+        *ngIf="cadastroUsuarioForm.controls.senha.hasError('required')">
+        Por favor insira a sua senha*
+      </span>
+      <button class="mt btn centro-btn" expand="full" [disabled]="!cadastroUsuarioForm.valid"
+        style="background-color:#4aba70;margin-top: 10%" (click)="cadastrar()">
+        Enviar
+      </button>
+    </form>
+
+    <br>
+    <a class="center link fontCustom" routerLink="/login">Já possui conta? Efetue Login</a>
+
+
+  </ion-content>
+</ion-app>

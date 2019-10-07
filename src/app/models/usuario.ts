@@ -1,8 +1,9 @@
 export class Usuario {
     id?: string;
-    identificação:string;
     turma: number;
+    nome: string;
     cpf: string;
     status: string;
     servidor: boolean;
+    email: string;
 }
