@@ -32,6 +32,7 @@ import { CadastroUsuarioComponent } from './auth/cadastro-usuario/cadastro-usuar
 import { ValidadorCpf } from './util/validador.cpf';
 import { ValidarPessoaCronosService } from './service/validar.pessoa.cronos.service';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+import { StringOperator } from './util/string.operator';
 
 
 
@@ -67,6 +68,7 @@ import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http'
     HttpClient,
     StatusBar,
     SplashScreen,
+    StringOperator,
     RecuperarSenhaComponent,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 

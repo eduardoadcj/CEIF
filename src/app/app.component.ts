@@ -8,6 +8,7 @@ import { UsuariosService } from './service/usuarios.service';
 import { Observable } from 'rxjs';
 import { Usuario } from './models/usuario';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { StringOperator } from './util/string.operator';
 
 @Component({
   selector: 'app-root',
@@ -29,12 +30,13 @@ export class AppComponent {
     private usuarioService: UsuariosService,
     private afAuth: AngularFireAuth,
   ) {
+    this.initializeApp();
     this.afAuth.authState.subscribe((usuario) => {
      this.usuarioService.buscarPorId(usuario.uid,((nome:string)=>{
-       this.nomeUsuario = nome;
+       this.nomeUsuario = nome;       
      }));
     })   
-    this.initializeApp();
+    
     if(this.tipoUsuario === "aluno"){
       this.tipo = false;
     }else{
