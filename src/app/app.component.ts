@@ -32,10 +32,12 @@ export class AppComponent {
   ) {
     this.initializeApp();
     this.afAuth.authState.subscribe((usuario) => {
-     this.usuarioService.buscarPorId(usuario.uid,((nome:string)=>{
-       this.nomeUsuario = nome;       
-     }));
-    })   
+      if(usuario){
+        this.usuarioService.buscarPorId(usuario.uid,((nome:string)=>{
+          this.nomeUsuario = StringOperator.abbreviate(nome);       
+        }));
+      }
+    });
     
     if(this.tipoUsuario === "aluno"){
       this.tipo = false;
