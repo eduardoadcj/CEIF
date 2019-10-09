@@ -8,6 +8,8 @@ import { from, throwError, Observable } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { UsuariosService } from '../service/usuarios.service';
+import { Assistente } from '../models/assistente';
+import { AssistenteService } from '../service/assistente.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +23,12 @@ export class AuthService {
     private router: Router,
     public alertController: AlertController,
     private afs: AngularFirestore,
-    private usuarioService: UsuariosService
+    private usuarioService: UsuariosService,
+    private assistenteService: AssistenteService
 
   ) { }
 
-  registrar(usuario: PessoaCronos, email: string, senha: string) {
+  registrarUsuario(usuario: PessoaCronos, email: string, senha: string) {
     const usuarioCadastro: Usuario = {
       cpf: usuario.cpf,
       servidor: usuario.servidor,
@@ -37,12 +40,32 @@ export class AuthService {
     this.afAuth.auth.createUserWithEmailAndPassword(email, senha).then((result) => {
       if(result){
         this.usuarioService.adicionarUsuário(usuarioCadastro,result.user.uid).then((result) =>{
+          this.router.navigate(['/login'])
         });
       }else{
         this.presentErroCadastroUsuario()
       }
     });    
   }
+  registrarAssistente(usuario: PessoaCronos, email: string, senha: string) {
+    const assistenteCadastro: Assistente = {
+      cpf: usuario.cpf,
+      status: 'Ativo',
+      nome: usuario.nome,
+      email: email,
+    }
+    this.afAuth.auth.createUserWithEmailAndPassword(email, 'ifpr2019').then((result) => {
+      if(result){
+        this.assistenteService.adicionarAssistente(assistenteCadastro,result.user.uid).then((result) =>{
+          this.router.navigate(['/home'])
+        });
+      }else{
+        this.presentErroCadastroUsuario()
+      }
+    });    
+  }
+
+
 
   login(email, senha) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, senha)

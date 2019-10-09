@@ -3,6 +3,9 @@ import { MenuController, AlertController } from '@ionic/angular';
 import { LocacaoService } from '../service/locacao.service';
 import { Observable } from 'rxjs';
 import { Locacao } from '../models/locacao';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { UsuariosService } from '../service/usuarios.service';
+import { Usuario } from '../models/usuario';
 
 @Component({
   selector: 'app-home',
@@ -13,16 +16,28 @@ export class HomePage implements OnInit {
 
   locacao$: Observable<Locacao[]>;
 
-  tipoUsuario: string = 'aluno';
+  tipoUsuario: string;
   tipo: boolean = true;
 
-  constructor(private menuController: MenuController, private alertController: AlertController, private locacaoService: LocacaoService) {
-    if (this.tipoUsuario === "aluno") {
-      this.tipo = false;
-    } else {
-      this.tipo = true;
-    }
-
+  constructor(
+    private menuController: MenuController,
+     private alertController: AlertController,
+      private locacaoService: LocacaoService,
+      private afAuth: AngularFireAuth,
+      private usuarioService: UsuariosService
+      ) {
+    this.afAuth.authState.subscribe((usuario) => {
+      if(usuario){
+        this.usuarioService.buscarPorId(usuario.uid,((usuario:Usuario)=>{
+          this.tipoUsuario = 'aluno';
+          if(this.tipoUsuario === "aluno"){
+            this.tipo = false;
+          }else{
+            this.tipo = true;
+          }
+        }));
+      }
+    });
   }
 
   ngOnInit() {

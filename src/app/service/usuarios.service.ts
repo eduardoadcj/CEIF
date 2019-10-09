@@ -23,7 +23,7 @@ export class UsuariosService {
     categoriaDoc.valueChanges()
       .pipe(take(1))
       .subscribe(usuario => {
-        onComplete(usuario.nome);
+        onComplete(usuario);
       });
   }
 

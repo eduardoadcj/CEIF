@@ -10,6 +10,7 @@ import { AddequipamentoComponent } from './equipamento/addequipamento/addequipam
 import { ListEquipamentoComponent } from './equipamento/list-equipamento/list-equipamento.component';
 import { EmprestimoComponent } from './emprestimo/emprestimo.component';
 import { CadastroUsuarioComponent } from './auth/cadastro-usuario/cadastro-usuario.component';
+import { CadastrarAssistenteComponent } from './auth/cadastrar-assistente/cadastrar-assistente.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'splash', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'equipamento', component: ListEquipamentoComponent },
   { path: 'emprestimo', component: EmprestimoComponent },
   { path: 'cadastroUsuario', component: CadastroUsuarioComponent },
+  { path: 'cadastroAssistente', component: CadastrarAssistenteComponent},
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
   { path: 'list-categoria', loadChildren: './equipamento/list-categoria/list-categoria.module#ListCategoriaPageModule' },
   { path: 'categoria', component: ListCategoriaPage },

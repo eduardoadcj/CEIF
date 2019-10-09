@@ -45,7 +45,7 @@
         </ion-card>
       <!-- LISTA -->
   </div>
-  <ion-fab *ngIf="!tipo" horizontal="end" vertical="bottom" slot="fixed">
+  <ion-fab *ngIf="tipo" horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button color="success" routerLink="/emprestimo">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
@@ -53,7 +53,7 @@
   <!-- FIM USUAIO -->
 </ion-content>
 
-<ion-tabs *ngIf="tipo">
+<ion-tabs *ngIf="!tipo">
   <ion-tab-bar slot="bottom">
     <ion-tab-button>
       <ion-icon name="calendar"></ion-icon>

@@ -13,7 +13,9 @@
         </ion-item>
         <ion-item *ngIf="tipo">
           <ion-icon name="person-add" slot="start"></ion-icon>
-          <ion-label>Novo assistente</ion-label>
+          <ion-label>
+            <a routerLink="/cadastroAssistente">Novo assistente</a>            
+          </ion-label>
         </ion-item>
         <ion-item *ngIf="tipo">
           <ion-icon name="bookmarks" slot="start"></ion-icon>

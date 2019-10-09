@@ -1,0 +1,61 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="login"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Cadastrar Assistente</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+      <form [formGroup]="cadastroAssistenteForm">
+
+          <ion-item>
+            <div class="controls">
+              <ion-label class="inputCustom" position="floating">CPF<ion-text color="dark">*</ion-text>
+              </ion-label>
+              <ion-input type="text" formControlName='cpf' required></ion-input>
+            </div>
+          </ion-item>
+          <span style='color:gray; font-size: 10px;margin-left: 5%;'
+            *ngIf="cadastroAssistenteForm.controls.cpf.hasError('required')">
+            Por favor insira o seu cpf*
+          </span>
+          <span style='color:red; font-size:12px;margin-left: 5%;'
+            *ngIf="cadastroAssistenteForm.controls.cpf.hasError('validarCpfForm')">
+            Por favor insira um cpf válido
+          </span>
+          <ion-item>
+            <div class="controls">
+              <ion-label class="inputCustom" position="floating">E-mail<ion-text color="dark">*</ion-text>
+              </ion-label>
+              <ion-input type="text" formControlName='email' required #email></ion-input>
+            </div>
+          </ion-item>
+          <span style='color:gray; font-size: 10px;margin-left: 5%;'
+            *ngIf="cadastroAssistenteForm.controls.email.hasError('required')">
+            Por favor insira o seu e-mail*
+          </span>
+          <span style='color:red; font-size:12px;margin-left: 5%;'
+            *ngIf="cadastroAssistenteForm.controls.email.hasError('email')">
+            Por favor insira o seu e-mail corretamente
+          </span>    
+          <!--<ion-item>
+            <ion-label position="floating">Senha : <ion-text color="dark">*</ion-text>
+            </ion-label>
+            <ion-input required name="mail" type="password" formControlName='senha'></ion-input>
+          </ion-item>
+          <span style='color:gray; font-size: 10px;margin-left: 5%'
+            *ngIf="cadastroAssistenteForm.controls.senha.hasError('required')">
+            Por favor insira a sua senha*
+          </span>
+          -->
+          <button class="mt btn centro-btn" expand="full" [disabled]="!cadastroAssistenteForm.valid"
+            style="background-color:#4aba70;margin-top: 10%" (click)="cadastrar()">
+            Enviar
+          </button>
+        </form>
+
+  </ion-content>
+</ion-app>

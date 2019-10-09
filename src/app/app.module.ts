@@ -33,6 +33,7 @@ import { ValidadorCpf } from './util/validador.cpf';
 import { ValidarPessoaCronosService } from './service/validar.pessoa.cronos.service';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import { StringOperator } from './util/string.operator';
+import { CadastrarAssistenteComponent } from './auth/cadastrar-assistente/cadastrar-assistente.component';
 
 
 
@@ -48,6 +49,7 @@ import { StringOperator } from './util/string.operator';
     ListEquipamentoComponent,
     EmprestimoComponent,
     CadastroUsuarioComponent,
+    CadastrarAssistenteComponent
   ],
   entryComponents: [],
   imports: [

@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 import { Usuario } from './models/usuario';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { StringOperator } from './util/string.operator';
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -17,7 +16,7 @@ import { StringOperator } from './util/string.operator';
 })
 export class AppComponent {
 
-  tipoUsuario: string = 'usuario';
+  tipoUsuario: string;
   tipo: boolean = true;
   nomeUsuario: string;
   usuarioLogado$: Observable<Usuario>;
@@ -33,17 +32,18 @@ export class AppComponent {
     this.initializeApp();
     this.afAuth.authState.subscribe((usuario) => {
       if(usuario){
-        this.usuarioService.buscarPorId(usuario.uid,((nome:string)=>{
-          this.nomeUsuario = StringOperator.abbreviate(nome);       
+        this.usuarioService.buscarPorId(usuario.uid,((usuario:Usuario)=>{
+          this.nomeUsuario = StringOperator.abbreviate(usuario.nome);
+          this.tipoUsuario = 'aluno';
+          if(this.tipoUsuario === "aluno"){
+            this.tipo = false;
+          }else{
+            this.tipo = true;
+          }
         }));
       }
     });
-    
-    if(this.tipoUsuario === "aluno"){
-      this.tipo = false;
-    }else{
-      this.tipo = true;
-    }
+   this.tipo = true;
   }
 
   initializeApp() {
@@ -55,5 +55,6 @@ export class AppComponent {
 
   deslogar(){
     this.auth.deslogar();
+    this.nomeUsuario = '';
   }
 }
