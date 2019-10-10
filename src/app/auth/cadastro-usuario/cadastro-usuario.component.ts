@@ -30,7 +30,7 @@ export class CadastroUsuarioComponent implements OnInit {
     this.validaPessoa.validarUsuario(this.cadastroUsuarioForm.value.cpf,(pessoa: PessoaCronos)=>{
       if(pessoa){
         console.log(pessoa);
-        this.authService.registrar(pessoa,this.cadastroUsuarioForm.value.email,this.cadastroUsuarioForm.value.senha);
+        this.authService.registrarUsuario(pessoa,this.cadastroUsuarioForm.value.email,this.cadastroUsuarioForm.value.senha);
         this.cadastroUsuarioForm.reset();
       }else{
         console.log("Usuário não encontrado");

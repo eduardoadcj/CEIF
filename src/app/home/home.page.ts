@@ -16,7 +16,6 @@ export class HomePage implements OnInit {
 
   locacao$: Observable<Locacao[]>;
 
-  tipoUsuario: string;
   tipo: boolean = true;
 
   constructor(
@@ -29,12 +28,9 @@ export class HomePage implements OnInit {
     this.afAuth.authState.subscribe((usuario) => {
       if(usuario){
         this.usuarioService.buscarPorId(usuario.uid,((usuario:Usuario)=>{
-          this.tipoUsuario = 'aluno';
-          if(this.tipoUsuario === "aluno"){
+          if(usuario != null){
             this.tipo = false;
-          }else{
-            this.tipo = true;
-          }
+          }            
         }));
       }
     });
