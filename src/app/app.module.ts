@@ -11,6 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+//QRCode
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+
 //COMPONENTS
 import { LoginComponent } from './auth/login/login.component';
 
@@ -18,7 +22,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-
 
 import { ListCategoriaPage } from './equipamento/list-categoria/list-categoria.page';
 import { RecuperarSenhaComponent } from './auth/recuperar-senha/recuperar-senha.component';
@@ -34,8 +37,6 @@ import { ValidarPessoaCronosService } from './service/validar.pessoa.cronos.serv
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import { StringOperator } from './util/string.operator';
 import { CadastrarAssistenteComponent } from './auth/cadastrar-assistente/cadastrar-assistente.component';
-
-
 
 @NgModule({
   declarations: [
@@ -63,17 +64,18 @@ import { CadastrarAssistenteComponent } from './auth/cadastrar-assistente/cadast
     AngularFirestoreModule,
     IonicSelectableModule,
     HttpClientModule,
+    NgxQRCodeModule,
   ],
   providers: [
     ValidadorCpf,
     ValidarPessoaCronosService,
     HttpClient,
+    BarcodeScanner,
     StatusBar,
     SplashScreen,
     StringOperator,
     RecuperarSenhaComponent,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-
   ],
   bootstrap: [AppComponent]
 })
