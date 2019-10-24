@@ -1,8 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title style="margin-left: 20%;color: #4aba70">CEIF IFPR</ion-title>
+    <ion-title><span style="margin-left: 30%;color: #4aba70">CEIF IFPR</span></ion-title>
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon name="camera"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -10,7 +15,27 @@
 <ion-content>
 
   <!-- ASSISTENTE -->
-
+  <div *ngIf="tipo">
+    <ion-card style="width:80%;margin-left:10%;text-align: center">
+      <ion-card-header>
+        <ion-card-title style="text-align: center">24/10/2019
+        </ion-card-title>
+        <hr style="border-top:solid 1px; border-color: grey">
+        <ion-card-subtitle style="text-align: center"><strong>Aluno</strong></ion-card-subtitle>
+        <ion-card-subtitle>Matheus Ramos Cardoso</ion-card-subtitle>
+        <ion-card-subtitle>049.103.729-54</ion-card-subtitle>
+        <ion-card-subtitle style="text-align: center"><strong>Itens Emprestimo</strong></ion-card-subtitle>
+        <ion-card-subtitle>Viola
+          x 3</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div style="text-align:center">
+          <h2 style="color:green">Solicitado</h2>
+          <h3>Edmar</h3>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
   <!-- FIM ASSISTENTE -->
 
 
@@ -28,22 +53,25 @@
         </ion-label>
       </ion-item>
     </ion-list> -->
-        <ion-card *ngFor="let locacaoFora of locacao$| async;let i = index;" style="width:80%;margin-left:10%;text-align: center">
-          <ion-card-header>
-            <ion-card-title style="text-align: center">{{ locacaoFora.dataLocacao.seconds * 1000 | date:'dd/MM/yyyy' }}</ion-card-title>
-            <hr style="border-top:solid 1px; border-color: grey"  >
-            <ion-card-subtitle style="text-align: center"><strong>Itens Emprestimo</strong></ion-card-subtitle>
-            <ion-card-subtitle *ngFor="let locacao of locacaoFora.itensLocacao">{{locacao.material.descricao}} x{{locacao.quantidade}}</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-            <div style="text-align:center">
-              <h2 style="color:green">Emprestado</h2>
-              <h3>Edmar</h3>
-            </div>
-          </ion-card-content>
-          <ion-button (click)="qrcode()" style="padding-bottom:1%">QR Code</ion-button>
-        </ion-card>
-      <!-- LISTA -->
+    <ion-card *ngFor="let locacaoFora of locacao$| async;let i = index;"
+      style="width:80%;margin-left:10%;text-align: center">
+      <ion-card-header>
+        <ion-card-title style="text-align: center">{{ locacaoFora.dataLocacao.seconds * 1000 | date:'dd/MM/yyyy' }}
+        </ion-card-title>
+        <hr style="border-top:solid 1px; border-color: grey">
+        <ion-card-subtitle style="text-align: center"><strong>Itens Emprestimo</strong></ion-card-subtitle>
+        <ion-card-subtitle *ngFor="let locacao of locacaoFora.itensLocacao">{{locacao.material.descricao}}
+          x{{locacao.quantidade}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div style="text-align:center">
+          <h2 style="color:green">Emprestado</h2>
+          <h3>Edmar</h3>
+        </div>
+      </ion-card-content>
+      <ion-button (click)="qrcode()" style="padding-bottom:1%">QR Code</ion-button>
+    </ion-card>
+    <!-- LISTA -->
   </div>
   <ion-fab *ngIf="!tipo" horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button color="success" routerLink="/emprestimo">
@@ -56,22 +84,22 @@
 <ion-tabs *ngIf="tipo">
   <ion-tab-bar slot="bottom">
     <ion-tab-button>
-      <ion-icon name="calendar"></ion-icon>
-      <ion-label>Schedule</ion-label>
+      <ion-icon name="alert"></ion-icon>
+      <ion-label>Solicitados</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="speakers">
-      <ion-icon name="contacts"></ion-icon>
-      <ion-label>Speakers</ion-label>
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+      <ion-label>Emprestados</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="map">
-      <ion-icon name="map"></ion-icon>
-      <ion-label>Map</ion-label>
+      <ion-icon name="checkmark-circle"></ion-icon>
+      <ion-label>Devolvidos</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="about">
-      <ion-icon name="information-circle"></ion-icon>
-      <ion-label>About</ion-label>
+      <ion-icon name="close"></ion-icon>
+      <ion-label>Atrasados</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

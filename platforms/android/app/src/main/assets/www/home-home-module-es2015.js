@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title style=\"margin-left: 20%;color: #4aba70\">CEIF IFPR</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button autoHide=\"false\"></ion-menu-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <!-- ASSISTENTE -->\r\n\r\n  <!-- FIM ASSISTENTE -->\r\n\r\n\r\n  <!-- USUARIO -->\r\n  <!-- LISTA -->\r\n  <div *ngIf=\"!tipo\">\r\n    <!-- <ion-list>\r\n      <ion-item>\r\n        <ion-avatar slot=\"start\">\r\n          <img width=\"30px\" height=\"30px\" src=\"https://blog.certisign.com.br/wp-content/uploads/2018/10/certo.png?cod_rev=38788\">\r\n        </ion-avatar>\r\n        <ion-label>\r\n          <h2>Instrumentos</h2>\r\n          <h3>Violão</h3>\r\n        </ion-label>\r\n      </ion-item>\r\n    </ion-list> -->\r\n        <ion-card *ngFor=\"let locacaoFora of locacao$| async;let i = index;\" style=\"width:80%;margin-left:10%;text-align: center\">\r\n          <ion-card-header>\r\n            <ion-card-title style=\"text-align: center\">{{ locacaoFora.dataLocacao.seconds * 1000 | date:'dd/MM/yyyy' }}</ion-card-title>\r\n            <hr style=\"border-top:solid 1px; border-color: grey\"  >\r\n            <ion-card-subtitle style=\"text-align: center\"><strong>Itens Emprestimo</strong></ion-card-subtitle>\r\n            <ion-card-subtitle *ngFor=\"let locacao of locacaoFora.itensLocacao\">{{locacao.material.descricao}} x{{locacao.quantidade}}</ion-card-subtitle>\r\n          </ion-card-header>\r\n          <ion-card-content>\r\n            <div style=\"text-align:center\">\r\n              <h2 style=\"color:green\">Emprestado</h2>\r\n              <h3>Edmar</h3>\r\n            </div>\r\n          </ion-card-content>\r\n          <ion-button (click)=\"qrcode()\" style=\"padding-bottom:1%\">QR Code</ion-button>\r\n        </ion-card>\r\n      <!-- LISTA -->\r\n  </div>\r\n  <ion-fab *ngIf=\"!tipo\" horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\r\n    <ion-fab-button color=\"success\" routerLink=\"/emprestimo\">\r\n      <ion-icon name=\"add\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n  <!-- FIM USUAIO -->\r\n</ion-content>\r\n\r\n<ion-tabs *ngIf=\"tipo\">\r\n  <ion-tab-bar slot=\"bottom\">\r\n    <ion-tab-button>\r\n      <ion-icon name=\"calendar\"></ion-icon>\r\n      <ion-label>Schedule</ion-label>\r\n    </ion-tab-button>\r\n    <ion-tab-button tab=\"speakers\">\r\n      <ion-icon name=\"contacts\"></ion-icon>\r\n      <ion-label>Speakers</ion-label>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"map\">\r\n      <ion-icon name=\"map\"></ion-icon>\r\n      <ion-label>Map</ion-label>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"about\">\r\n      <ion-icon name=\"information-circle\"></ion-icon>\r\n      <ion-label>About</ion-label>\r\n    </ion-tab-button>\r\n  </ion-tab-bar>\r\n</ion-tabs>"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title><span style=\"margin-left: 30%;color: #4aba70\">CEIF IFPR</span></ion-title>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button autoHide=\"false\"></ion-menu-button>\n    </ion-buttons>\n    <ion-buttons slot=\"primary\">\n      <ion-button>\n        <ion-icon name=\"camera\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <!-- ASSISTENTE -->\n  <div *ngIf=\"tipo\">\n    <ion-card style=\"width:80%;margin-left:10%;text-align: center\">\n      <ion-card-header>\n        <ion-card-title style=\"text-align: center\">24/10/2019\n        </ion-card-title>\n        <hr style=\"border-top:solid 1px; border-color: grey\">\n        <ion-card-subtitle style=\"text-align: center\"><strong>Aluno</strong></ion-card-subtitle>\n        <ion-card-subtitle>Matheus Ramos Cardoso</ion-card-subtitle>\n        <ion-card-subtitle>049.103.729-54</ion-card-subtitle>\n        <ion-card-subtitle style=\"text-align: center\"><strong>Itens Emprestimo</strong></ion-card-subtitle>\n        <ion-card-subtitle>Viola\n          x 3</ion-card-subtitle>\n      </ion-card-header>\n      <ion-card-content>\n        <div style=\"text-align:center\">\n          <h2 style=\"color:green\">Solicitado</h2>\n          <h3>Edmar</h3>\n        </div>\n      </ion-card-content>\n    </ion-card>\n  </div>\n  <!-- FIM ASSISTENTE -->\n\n\n  <!-- USUARIO -->\n  <!-- LISTA -->\n  <div *ngIf=\"!tipo\">\n    <!-- <ion-list>\n      <ion-item>\n        <ion-avatar slot=\"start\">\n          <img width=\"30px\" height=\"30px\" src=\"https://blog.certisign.com.br/wp-content/uploads/2018/10/certo.png?cod_rev=38788\">\n        </ion-avatar>\n        <ion-label>\n          <h2>Instrumentos</h2>\n          <h3>Violão</h3>\n        </ion-label>\n      </ion-item>\n    </ion-list> -->\n    <ion-card *ngFor=\"let locacaoFora of locacao$| async;let i = index;\"\n      style=\"width:80%;margin-left:10%;text-align: center\">\n      <ion-card-header>\n        <ion-card-title style=\"text-align: center\">{{ locacaoFora.dataLocacao.seconds * 1000 | date:'dd/MM/yyyy' }}\n        </ion-card-title>\n        <hr style=\"border-top:solid 1px; border-color: grey\">\n        <ion-card-subtitle style=\"text-align: center\"><strong>Itens Emprestimo</strong></ion-card-subtitle>\n        <ion-card-subtitle *ngFor=\"let locacao of locacaoFora.itensLocacao\">{{locacao.material.descricao}}\n          x{{locacao.quantidade}}</ion-card-subtitle>\n      </ion-card-header>\n      <ion-card-content>\n        <div style=\"text-align:center\">\n          <h2 style=\"color:green\">Emprestado</h2>\n          <h3>Edmar</h3>\n        </div>\n      </ion-card-content>\n      <ion-button (click)=\"qrcode()\" style=\"padding-bottom:1%\">QR Code</ion-button>\n    </ion-card>\n    <!-- LISTA -->\n  </div>\n  <ion-fab *ngIf=\"!tipo\" horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\n    <ion-fab-button color=\"success\" routerLink=\"/emprestimo\">\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n  <!-- FIM USUAIO -->\n</ion-content>\n\n<ion-tabs *ngIf=\"tipo\">\n  <ion-tab-bar slot=\"bottom\">\n    <ion-tab-button>\n      <ion-icon name=\"alert\"></ion-icon>\n      <ion-label>Solicitados</ion-label>\n    </ion-tab-button>\n    <ion-tab-button tab=\"speakers\">\n      <ion-icon name=\"checkmark-circle-outline\"></ion-icon>\n      <ion-label>Emprestados</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"map\">\n      <ion-icon name=\"checkmark-circle\"></ion-icon>\n      <ion-label>Devolvidos</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"about\">\n      <ion-icon name=\"close\"></ion-icon>\n      <ion-label>Atrasados</ion-label>\n    </ion-tab-button>\n  </ion-tab-bar>\n</ion-tabs>"
 
 /***/ }),
 
@@ -83,23 +83,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _service_locacao_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/locacao.service */ "./src/app/service/locacao.service.ts");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
+/* harmony import */ var _service_usuarios_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../service/usuarios.service */ "./src/app/service/usuarios.service.ts");
+
+
 
 
 
 
 let HomePage = class HomePage {
-    constructor(menuController, alertController, locacaoService) {
+    constructor(menuController, alertController, locacaoService, afAuth, usuarioService) {
         this.menuController = menuController;
         this.alertController = alertController;
         this.locacaoService = locacaoService;
-        this.tipoUsuario = 'aluno';
+        this.afAuth = afAuth;
+        this.usuarioService = usuarioService;
         this.tipo = true;
-        if (this.tipoUsuario === "aluno") {
-            this.tipo = false;
-        }
-        else {
-            this.tipo = true;
-        }
+        this.afAuth.authState.subscribe((usuario) => {
+            if (usuario) {
+                this.usuarioService.buscarPorId(usuario.uid, ((usuario) => {
+                    if (usuario != null) {
+                        this.tipo = false;
+                    }
+                }));
+            }
+        });
     }
     ngOnInit() {
         this.locacaoService.buscarLocacao((local$) => {
@@ -134,7 +142,9 @@ let HomePage = class HomePage {
 HomePage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },
-    { type: _service_locacao_service__WEBPACK_IMPORTED_MODULE_3__["LocacaoService"] }
+    { type: _service_locacao_service__WEBPACK_IMPORTED_MODULE_3__["LocacaoService"] },
+    { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"] },
+    { type: _service_usuarios_service__WEBPACK_IMPORTED_MODULE_5__["UsuariosService"] }
 ];
 HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -142,7 +152,11 @@ HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./home.page.html */ "./node_modules/raw-loader/index.js!./src/app/home/home.page.html"),
         styles: [__webpack_require__(/*! ./home.page.scss */ "./src/app/home/home.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _service_locacao_service__WEBPACK_IMPORTED_MODULE_3__["LocacaoService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"],
+        _service_locacao_service__WEBPACK_IMPORTED_MODULE_3__["LocacaoService"],
+        _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"],
+        _service_usuarios_service__WEBPACK_IMPORTED_MODULE_5__["UsuariosService"]])
 ], HomePage);
 
 
