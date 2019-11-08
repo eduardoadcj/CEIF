@@ -26,6 +26,12 @@ export class CategoriasService {
 
 
 
+
+
+
+
+  // git salvando
+
   buscarPorId(key, onComplete): void {
     let categoriaDoc = this.afs.doc<Categoria>('categoria/' + key + '');
     categoriaDoc.valueChanges()
