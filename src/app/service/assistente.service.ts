@@ -7,13 +7,13 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 })
 export class AssistenteService {
 
-  private usuarioCollection: AngularFirestoreCollection<Assistente> = this.afs.collection('usuario');
+  private usuarioCollection: AngularFirestoreCollection<Assistente> = this.afs.collection('assistente');
 
   constructor(
     private afs: AngularFirestore,
   ) { }
 
-  adicionarAssistente(assistente: Assistente,id: string) {
+  adicionarAssistente(assistente: Assistente, id: string) {
     assistente.id = id;
     return this.usuarioCollection.doc(assistente.id).set(assistente);
   }

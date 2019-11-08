@@ -38,35 +38,35 @@ export class EmprestimoComponent implements OnInit {
 
   listaItensLocacao = new Array<ItensLocacao>();
 
-  
+
 
   uidUser: string;
 
   itenLocacaoForm = this.fb.group({
     id: [undefined],
-    categoria:['',[Validators.required]],
-    material:['',[Validators.required]],
-    quantidade:[1,[Validators.required]],
+    categoria: ['', [Validators.required]],
+    material: ['', [Validators.required]],
+    quantidade: [1, [Validators.required]],
   });
 
   constructor(
     private materiaisService: MateriaisService,
-    private locacaoService: LocacaoService, 
+    private locacaoService: LocacaoService,
     private fb: FormBuilder,
     private categoriasService: CategoriasService,
     private auth: AngularFireAuth,
     private router: Router,
     public alertController: AlertController,
-    ) {
+  ) {
     // this.materiais$ = this.materiaisService.listarMaterial();
-    this.categorias$ = this.categoriasService.listarCategoria();    
-    this.categorias$.subscribe(categoria =>{
+    this.categorias$ = this.categoriasService.listarCategoria();
+    this.categorias$.subscribe(categoria => {
       this.listaCategoria = categoria;
     })
-    this.getUserUid();    
+    this.getUserUid();
   }
 
-  getUserUid(){
+  getUserUid() {
     this.auth.authState.subscribe((usuario) => {
       this.uidUser = usuario.uid;
     });
@@ -77,7 +77,7 @@ export class EmprestimoComponent implements OnInit {
     value: any,
   }) {
     this.material = event.value;
-    
+
   }
   categoriaChange(event: {
     component: IonicSelectableComponent,
@@ -92,43 +92,44 @@ export class EmprestimoComponent implements OnInit {
     });
   }
 
-  addMaterial(){
-    const itemLocacao : ItensLocacao={
+  addMaterial() {
+    const itemLocacao: ItensLocacao = {
       material: this.material,
       quantidade: this.itenLocacaoForm.value.quantidade
     }
-    if(itemLocacao.quantidade <= this.material.disponivel){
+    if (itemLocacao.quantidade <= this.material.disponivel) {
       this.material.disponivel -= itemLocacao.quantidade;
       this.listaItensLocacao.push(itemLocacao);
       this.itenLocacaoForm.reset();
-    }else{
-      this.presentErroItemIndisponível();      
+    } else {
+      this.presentErroItemIndisponível();
     }
-    
+
   }
-  deletar(i){
-    this.listaItensLocacao.splice(i,1);
+  deletar(i) {
+    this.listaItensLocacao.splice(i, 1);
   }
-  cadastrarEmprestimo(){
-    if(this.listaItensLocacao.length == 0){
-      this.presentErroEmprestimo();   
-    }else{
+  cadastrarEmprestimo() {
+    if (this.listaItensLocacao.length == 0) {
+      this.presentErroEmprestimo();
+    } else {
       let date: Date = new Date("2019-01-01");
 
-      let locacao : Locacao ={
+      let locacao: Locacao = {
         id: '0',
         dataDevolucao: date,
         dataLocacao: date,
         itensLocacao: this.listaItensLocacao,
         lid: '0',
         uid: this.uidUser,
+        status: 'Pendente',
       }
       this.locacaoService.adicionarLocacao(locacao);
       this.listaItensLocacao = [];
       this.router.navigate(['/home']);
       this.presentEmprestimoSuccess();
     }
-    
+
   }
   ngOnInit() { }
 
@@ -159,6 +160,6 @@ export class EmprestimoComponent implements OnInit {
     });
 
     await alert.present();
-  }
+   }
 }
 
