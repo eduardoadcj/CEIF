@@ -23,6 +23,9 @@ export class CategoriasService {
   listarCategoria(): Observable<Categoria[]> {
     return this.categoriaCollection.valueChanges();
   }
+
+
+
   buscarPorId(key, onComplete): void {
     let categoriaDoc = this.afs.doc<Categoria>('categoria/' + key + '');
     categoriaDoc.valueChanges()
@@ -31,6 +34,16 @@ export class CategoriasService {
         onComplete(material.nome);
       });
   }
-  
-  
+
+  alterarCategoria(categoria: Categoria) {
+    console.log(categoria.id);
+    return this.categoriaCollection.doc(categoria.id).set({
+      nome: categoria.nome,
+      id:categoria.id
+    });
+
+
+
+
+  }
 }

@@ -10,7 +10,7 @@
 <ion-content>
 
   <ion-searchbar></ion-searchbar>
-  <ion-list>
+  <ion-list *ngIf="!onEdit"> 
     <ion-item *ngFor="let categoria of categorias$| async">
       <ion-avatar slot="start">
         <img width="30px" height="30px"
@@ -19,6 +19,10 @@
       <ion-label>
         <h2>{{categoria.nome}}</h2>
       </ion-label>
+      <ion-button side="right" (click)="alterarCategorias(categoria.id, categoria)">Alterar</ion-button>
+
+
+
     </ion-item>
   </ion-list>
 
@@ -28,4 +32,20 @@
     </ion-fab-button>
   </ion-fab>
 
+  <div *ngIf="onEdit">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title class="center">Alterar Categoria</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-item>
+      <ion-label position="floating">Categoria</ion-label>
+      <ion-input [(ngModel)]="alterarCategoria.nome" value="{{alterarCategoria.nome}}"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <button class="mt btn centro-btn" expand="full" color="secondary" (click)="editar()">Enviar</button>
+  </div>
 </ion-content>

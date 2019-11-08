@@ -12,6 +12,7 @@ import { EmprestimoComponent } from './emprestimo/emprestimo.component';
 import { CadastroUsuarioComponent } from './auth/cadastro-usuario/cadastro-usuario.component';
 import { CadastrarAssistenteComponent } from './auth/cadastrar-assistente/cadastrar-assistente.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'splash', pathMatch: 'full' },
   { path: 'splash', component: SplashComponent },
@@ -26,6 +27,10 @@ const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
   { path: 'list-categoria', loadChildren: './equipamento/list-categoria/list-categoria.module#ListCategoriaPageModule' },
   { path: 'categoria', component: ListCategoriaPage },
+
+
+
+
 ];
 
 @NgModule({

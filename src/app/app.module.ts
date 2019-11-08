@@ -38,6 +38,7 @@ import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http'
 import { StringOperator } from './util/string.operator';
 import { CadastrarAssistenteComponent } from './auth/cadastrar-assistente/cadastrar-assistente.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +68,7 @@ import { CadastrarAssistenteComponent } from './auth/cadastrar-assistente/cadast
     NgxQRCodeModule,
   ],
   providers: [
+
     ValidadorCpf,
     ValidarPessoaCronosService,
     HttpClient,
