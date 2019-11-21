@@ -93,6 +93,12 @@ export class EmprestimoComponent implements OnInit {
   }
 
   addMaterial() {
+    
+    if(this.itenLocacaoForm.value.quantidade <= 0){
+      this.presentErroQuantidadeInvalida();
+      return;
+    }
+    
     const itemLocacao: ItensLocacao = {
       material: this.material,
       quantidade: this.itenLocacaoForm.value.quantidade
@@ -160,6 +166,15 @@ export class EmprestimoComponent implements OnInit {
     });
 
     await alert.present();
-   }
+  }
+  async presentErroQuantidadeInvalida() {
+    const alert = await this.alertController.create({
+      header: 'Erro!',
+      message: 'Informe uma quantidade válida!',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }
 
