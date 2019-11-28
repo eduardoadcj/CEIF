@@ -12,7 +12,7 @@
     <form [formGroup]="equipamentoForm">
       <ion-item>
         <div class="controls">
-          <ion-label class="inputCustom" position="floating">Descricao do Material<ion-text style="color:red">*
+          <ion-label class="inputCustom" position="floating">Descrição do material<ion-text style="color:red">*
             </ion-text>
           </ion-label>
           <ion-input type="text" formControlName='descricao'></ion-input>
@@ -20,7 +20,7 @@
       </ion-item>
       <span style='color:gray; font-size: 10px;margin-left: 5%;'
         *ngIf="equipamentoForm.controls.descricao.hasError('required')">
-        Por favor insira o nome do material*
+        Insira o nome do material*
       </span>
       <ion-item>
         <ion-label>Categoria</ion-label>
@@ -39,7 +39,7 @@
         </ion-item>
         <span style='color:gray; font-size: 10px;margin-left: 5%;'
           *ngIf="equipamentoForm.controls.descricao.hasError('required')">
-          Por favor insira a quantidade de Material*
+          Insira a quantidade de material*
         </span>
       <button class="mt btn centro-btn" style="background-color:#4aba70;margin-top:5% " expand="full" [disabled]="!equipamentoForm.valid" color="secondary"
         (click)="addMaterial()">
@@ -47,7 +47,6 @@
       </button>
       <br>
     </form>
-
 
   </ion-content>
 </ion-app>

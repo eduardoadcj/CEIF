@@ -38,8 +38,6 @@ export class EmprestimoComponent implements OnInit {
 
   listaItensLocacao = new Array<ItensLocacao>();
 
-
-
   uidUser: string;
 
   itenLocacaoForm = this.fb.group({
@@ -103,6 +101,7 @@ export class EmprestimoComponent implements OnInit {
       material: this.material,
       quantidade: this.itenLocacaoForm.value.quantidade
     }
+
     if (itemLocacao.quantidade <= this.material.disponivel) {
       this.material.disponivel -= itemLocacao.quantidade;
       this.listaItensLocacao.push(itemLocacao);

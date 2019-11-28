@@ -43,9 +43,12 @@ export class AddequipamentoComponent implements OnInit {
 
   }
   addMaterial() {
-    if (this.equipamentoForm.value.idCategoria == null || this.equipamentoForm.value.idCategoria == '') {
+    if (this.equipamentoForm.value.idCategoria == null 
+        || this.equipamentoForm.value.idCategoria == '') {
       this.presentErroMaterialCadastrado();
-    } else {
+    } else if(this.equipamentoForm.value.disponivel <= 0){
+      this.presentErrorQuantide();
+    }else {
       this.categoriaService.buscarPorId(this.equipamentoForm.value.idCategoria, (nome: string) => {
         let categoria: Categoria={
           id: this.equipamentoForm.value.idCategoria,
@@ -71,8 +74,18 @@ export class AddequipamentoComponent implements OnInit {
 
   async presentErrorCategoria() {
     const alert = await this.alertController.create({
-      header: 'Sucesso',
-      message: '<strong>Por favor selecione uma categoria!!</strong>',
+      header: 'ERRO!',
+      message: '<strong>Selecionar uma categoria!</strong>',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async presentErrorQuantide() {
+    const alert = await this.alertController.create({
+      header: 'ERRO!',
+      message: '<strong>Quantidade inserida inválida!</strong>',
       buttons: ['OK']
     });
 
@@ -82,7 +95,7 @@ export class AddequipamentoComponent implements OnInit {
   async presentMaterialCadastrado() {
     const alert = await this.alertController.create({
       header: 'Sucesso',
-      message: 'Material cadastrado!!',
+      message: 'Material cadastrado!',
       buttons: ['OK']
     });
 
@@ -90,7 +103,7 @@ export class AddequipamentoComponent implements OnInit {
   }
   async presentErroMaterialCadastrado() {
     const alert = await this.alertController.create({
-      header: 'Sucesso',
+      header: 'ERRO!',
       message: 'Erro ao cadastrar material!!',
       buttons: ['OK']
     });
