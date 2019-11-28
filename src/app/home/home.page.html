@@ -89,12 +89,12 @@
       <ion-icon name="alert"></ion-icon>
       <ion-label>Solicitados</ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="speakers">
+    <ion-tab-button (click)="emprestado()">
       <ion-icon name="checkmark-circle-outline"></ion-icon>
       <ion-label>Emprestados</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="map">
+    <ion-tab-button (click)="devolvido()">
       <ion-icon name="checkmark-circle"></ion-icon>
       <ion-label>Devolvidos</ion-label>
     </ion-tab-button>

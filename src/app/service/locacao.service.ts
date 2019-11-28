@@ -39,6 +39,12 @@ export class LocacaoService {
     });
 
   }
+  buscarLocacaoStatus( status) {
+    console.log(status);
+    return this.afs.collection<Locacao>('locacao', ref => ref.where('status', '==', status)).valueChanges();
+
+
+  }
   adicionarLocacao(locacao: Locacao) {
     locacao.id = this.afs.createId();
     return this.locacaoCollection.doc(locacao.id).set(locacao);

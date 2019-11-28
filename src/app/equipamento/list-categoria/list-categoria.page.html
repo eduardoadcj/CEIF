@@ -20,9 +20,7 @@
         <h2>{{categoria.nome}}</h2>
       </ion-label>
       <ion-button side="right" (click)="alterarCategorias(categoria.id, categoria)">Alterar</ion-button>
-
-
-
+      <ion-button side="right" color="danger" (click)="excluir(categoria)">Excluir</ion-button>
     </ion-item>
   </ion-list>
 

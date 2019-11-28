@@ -23,13 +23,9 @@ export class CategoriasService {
   listarCategoria(): Observable<Categoria[]> {
     return this.categoriaCollection.valueChanges();
   }
-
-
-
-
-
-
-
+  excluirCategoria(categoria: Categoria){
+    return this.categoriaCollection.doc(categoria.id).delete();
+  }
   // git salvando
 
   buscarPorId(key, onComplete): void {

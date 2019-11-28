@@ -20,7 +20,14 @@ export class MateriaisService {
     material.id = this.afs.createId();
     return this.materialCollection.doc(material.id).set(material);
   }
+  alterarMaterial(material: Material) {
+    return this.materialCollection.doc(material.id).update(material);
+  }
 
+  excluir(material: Material){
+    return this.materialCollection.doc(material.id).delete();
+
+  }
   listarMaterial(): Observable<Material[]> {
     return this.materialCollection.valueChanges();
   }

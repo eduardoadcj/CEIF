@@ -19,9 +19,6 @@ export class ListCategoriaPage implements OnInit {
   ngOnInit() {
     this.categorias$ = this.categoriaService.listarCategoria();
   }
-
-
-
   alterarCategorias(id: string, categoria: Categoria) {
     console.log(id);
     this.onEdit = true;
@@ -33,5 +30,8 @@ export class ListCategoriaPage implements OnInit {
     this.categoriaService.alterarCategoria(this.alterarCategoria);
     this.alterarCategoria = new Categoria;
     this.onEdit = false;
+  }
+  excluir(categoria: Categoria){
+    this.categoriaService.excluirCategoria(categoria);
   }
 }

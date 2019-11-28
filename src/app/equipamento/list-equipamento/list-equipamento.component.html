@@ -26,8 +26,8 @@
       <ion-button (click)="qrcode()">Alterar</ion-button>
     </ion-card> -->
   </ion-list>
-  <ion-list>
-   <hr style="border-top:solid 1px; border-color: grey;">
+  <ion-list *ngIf="!onEdit">
+    <hr style="border-top:solid 1px; border-color: grey;">
     <ion-item *ngFor="let material of materiais$| async">
       <ion-avatar slot="start">
         <img width="30px" height="30px"
@@ -38,12 +38,65 @@
         <h2><strong>{{material.descricao}}</strong></h2>
         <h3>Quantidade: {{material.quantidade}}</h3>
         <h3>Disponível: {{material.disponivel}}</h3>
-        <h4>Status: <span style="color:green">{{material.status}}</span></h4>
-        <ion-button (click)="qrcode()">Alterar</ion-button>
-        <ion-button (click)="qrcode()" color="danger">Excluir</ion-button>
+        <h4>Status: <span style="color:red">{{material.status}}</span></h4>
+        <ion-button (click)="editar(material)">Alterar</ion-button>
+        <ion-button (click)="indisponibilizar(material)">Mudar Status</ion-button><br />
+        <ion-button (click)="excluir(material)" color="danger">Excluir</ion-button>
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <form *ngIf="onEdit" [formGroup]="equipamentoForm">
+    <ion-item>
+      <div class="controls">
+        <ion-label class="inputCustom" position="floating">Descricao do Material<ion-text style="color:red">*
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" formControlName='descricao'></ion-input>
+      </div>
+    </ion-item>
+    <span style='color:gray; font-size: 10px;margin-left: 5%;'
+      *ngIf="equipamentoForm.controls.descricao.hasError('required')">
+      Por favor insira o nome do material*
+    </span>
+    <ion-item>
+      <ion-label>Categoria</ion-label>
+      <ion-select placeholder="Escolha" formControlName="idCategoria">
+        <ion-select-option *ngFor="let categoria of categorias$| async" value="{{categoria.id}}">{{categoria.nome}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <div class="controls">
+        <ion-label class="inputCustom" position="floating">Quantidade<ion-text style="color:red">*
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" formControlName='quantidade'></ion-input>
+      </div>
+    </ion-item>
+    <span style='color:gray; font-size: 10px;margin-left: 5%;'
+      *ngIf="equipamentoForm.controls.descricao.hasError('required')">
+      Por favor insira a quantidade de Material*
+    </span>
+    <ion-item>
+      <div class="controls">
+        <ion-label class="inputCustom" position="floating">Disponível<ion-text style="color:red">*
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" formControlName='disponivel'></ion-input>
+      </div>
+    </ion-item>
+    <span style='color:gray; font-size: 10px;margin-left: 5%;'
+      *ngIf="equipamentoForm.controls.descricao.hasError('required')">
+      Por favor insira a quantidade de material disponíve*
+    </span>
+    <button class="mt btn centro-btn" style="background-color:#4aba70;margin-top:5% " expand="full"
+      [disabled]="!equipamentoForm.valid" color="secondary" (click)="salvarEditar()">
+      Salvar
+    </button>
+    
+    <br>
+  </form>
 
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button color="success" routerLink="/addEquipamento">

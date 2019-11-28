@@ -53,6 +53,14 @@ export class HomePage implements OnInit {
       this.locacao$ = local$;
     });
   }
+  emprestado(){
+    this.locacao$ = null;
+     this.locacao$ = this.locacaoService.buscarLocacaoStatus('Emprestado')
+  }
+  devolvido(){
+    this.locacao$ = this.locacaoService.buscarLocacaoStatus('Devolvido')
+  } 
+
 
   openFirst() {
     this.menuController.enable(true, 'first');
