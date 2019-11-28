@@ -102,6 +102,9 @@ export class EmprestimoComponent implements OnInit {
       quantidade: this.itenLocacaoForm.value.quantidade
     }
 
+    console.log(itemLocacao.quantidade);
+    console.log(this.material.disponivel);
+
     if (itemLocacao.quantidade <= this.material.disponivel) {
       this.material.disponivel -= itemLocacao.quantidade;
       this.listaItensLocacao.push(itemLocacao);

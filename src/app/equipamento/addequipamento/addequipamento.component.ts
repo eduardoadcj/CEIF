@@ -46,7 +46,7 @@ export class AddequipamentoComponent implements OnInit {
     if (this.equipamentoForm.value.idCategoria == null 
         || this.equipamentoForm.value.idCategoria == '') {
       this.presentErroMaterialCadastrado();
-    } else if(this.equipamentoForm.value.disponivel <= 0){
+    } else if(this.equipamentoForm.value.disponivel <= 0 || isNaN(this.equipamentoForm.value.disponivel)){
       this.presentErrorQuantide();
     }else {
       this.categoriaService.buscarPorId(this.equipamentoForm.value.idCategoria, (nome: string) => {
